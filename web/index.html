@@ -1,0 +1,259 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="img/logo.png">   
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Hospital México</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/half-slider.css" rel="stylesheet">
+        <link href="css/simple-sidebar.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <!-- Barra de Navegacion -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+            <div class="container">
+                <!-- Agrupamos el contenido para una mejor vision en moviles -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-nav navbar-left">
+                        <a href="index.html"><img src="img/hosp.png" width="170px" height="55px"></a>
+                    </div>            
+                </div>
+                <!-- Colectamos los links de navegacion -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="login.html">Iniciar Sesión</a></li>
+                        <li><a href="#about">Acerca</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Imagenes del Carousel Slide -->
+        <header id="deslizante" class="carousel slide">
+            <!-- Indicadores -->
+            <ol class="carousel-indicators">
+                <li data-target="#deslizante" data-slide-to="0" class="active"></li>
+                <li data-target="#deslizante" data-slide-to="1"></li>
+                <li data-target="#deslizante" data-slide-to="2"></li>
+            </ol>
+            <!-- Imagenes -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <!-- Set the first background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('img/Hospital.jpg');"></div>                
+                    <div class="carousel-caption">
+                        <h1 class="titulos">Compromiso</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <!-- Set the second background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('img/hospital2.jpg');"></div>
+                    <div class="carousel-caption">
+                        <h1 class="titulos">Experiencia Y Calidad</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <!-- Set the third background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('img/hospital3.jpg');"></div>
+                    <div class="carousel-caption">
+                        <h1 class="titulos">Ética Y Profesionalismo</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- Control de los Slides -->
+            <a class="left carousel-control" href="#deslizante" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#deslizante" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </header>
+        <!-- Page Content -->
+        <div class="container"><br>
+            <h1 align="center" class="bienvenidos">Bienvenido a Hospital México</h1>       
+            <br><br>
+            <h2 class="titulo2">Servicios <a name="services"></a></h2>
+            <br><br>
+            <div class="row container">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="img/cirugia.jpg" alt="cirugia">
+                        <div class="caption">
+                            <h3>Cirugias</h3>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
+                                id est laborum.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="img/transplantes.jpg" alt="transplante">
+                        <div class="caption">
+                            <h3>Transplantes </h3>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
+                                id est laborum.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="img/dentista.jpg" alt="dentista">
+                        <div class="caption">
+                            <h3>Odontología</h3>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
+                                id est laborum.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div>                    
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                   <div class="thumbnail">
+                        <img src="img/emergencias.jpg" alt="emergencia">
+                        <div class="caption">
+                            <h3>Emergencias </h3>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
+                                id est laborum.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div> 
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="img/cuidados.jpg" alt="cuidados">
+                        <div class="caption">
+                            <h3>Cuidados Intensivos </h3>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
+                                id est laborum.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="img/radiologia01.jpg" alt="radiologia">
+                        <div class="caption">
+                            <h3>Radiologias </h3>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
+                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
+                                id est laborum.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div> 
+            </div> <!-- Cierre div Servicios -->                                                                 
+            <br><br><br>
+
+            <h2 class="titulo2">Acerca de... <a name="about"></a></h2><br>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/vb7n8Y6NGD0"></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <h3>Dr. Manuel R. Lazo, <small>Director médico</small></h3>                
+                    <p class="text-justify">
+                        En nuestro Hospital practicamos la medicina de vanguardia y utilizamos los métodos diagnósticos y tratamientos médico-quirúrgicos más actualizados. <br><br>
+
+                        Sabemos que frecuentemente el paciente acude al médico por un síntoma o malestar y lo que hacemos nosotros es estudiarlo de manera completa, escuchando la información proporcionada por el mismo o su familia, de tal manera que con frecuencia se diagnostican otros padecimientos que el paciente desconocía y que a veces son más serios que el motivo de la consulta. <br><br>
+
+                        La ubicación del hospital es estratégica ya que esta a tan solo unos pasos de la línea internacional, usted puede estacionar su vehículo en el lado americano y cruzar caminando, llegando al hospital en pocos minutos.
+                        <br><br></p>
+                </div>
+
+            </div>
+
+            <div class="container-fluid row contacto">
+                <h2 class="titulo2">Contacto <a name="contact"></a></h2>
+                <br><br>
+                <div class="col-xs-12 col-md-6">
+                    <p class="text-center campus">CAMPUS I </p>
+                    <p class="text-center">Av. Tecnológico S/N - Fracc. Industrial Julián de Obregón <br>
+                        León Guanajuato - C.P. 37290 <br>
+                        <b>Teléfono: </b>(477) 710 5200 - Fax (477) 711 2072 <br>
+                        <b>E-mail: </b>tecleon@itleon.edu.mx <br><br></p>
+                </div>                               
+                <div class="col-xs-12 col-md-6">
+                    <p class="text-center campus">CAMPUS II </p>
+                    <p class="text-center">Juan Alonso de Torres No. 3542 - Col. San José de Piletas <br>
+                        León Guanajuato - C.P. 37330 <br>
+                        <b>Teléfono: </b>(477) 710 5200 - Fax (477) 711 2072 <br>
+                        <b>E-mail: </b>tecleon@itleon.edu.mx <br><br></p>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+        <!-- pie de pagina -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <font size="4"><span class="copyright">Copyright &copy; Daniel Enríquez, Edgar Medina & Edgar Mendoza</span></font>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/TheEdGaR2611" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/EdGaR2611" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://plus.google.com/111007108560965375901" target="_blank"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline quicklinks">
+                            <li><a href="#"><font size="4">Politica de Privacidad</font></a></li>
+                            <li><a href="#"><font size="4">Terminos de Uso</font></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Uso de jQuery -->
+        <script src="js/jquery.js"></script>
+        <!-- Uso de JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Script para activar el Deslizamiento de imagenes -->
+        <script>
+            $('.carousel').carousel({
+                interval: 3000 //ajusta la velocidad
+            });
+        </script>
+    </body>
+</html>
