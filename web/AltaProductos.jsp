@@ -138,7 +138,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Nombre</label>
-                                    <input type="text" class="form-control" name="nombrep" placeholder="Introduce una Descripcion">
+                                    <input type="text" class="form-control" name="nombrep" placeholder="Introduce el nombre del producto">
                                 </div>
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Descripcion </label>

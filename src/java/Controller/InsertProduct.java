@@ -1,8 +1,14 @@
 
 package Controller;
 
+import Model.Clasess.Producto;
+import Model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,17 +19,20 @@ public class InsertProduct extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nombre = request.getParameter("nombrep");
-        request.getParameter("descrip");
-        request.getParameter("provedorp");
-        request.getParameter("costop");
-        request.getParameter("preciop");
-        request.getParameter("existenciap");
-        request.getParameter("tipop");
-        request.getParameter("unidadp");
-        
-        PrintWriter out = response.getWriter();
-        out.println(nombre);
+            Calendar date = new GregorianCalendar();
+            
+            Producto product = new Producto();
+            product.setNombre(request.getParameter("nombrep"));
+            product.setDescripcion(request.getParameter("descrip"));
+            product.setProveedor(request.getParameter("provedorp"));
+            product.setCosto(new Float(request.getParameter("costop")));
+            product.setPrecio(new Float(request.getParameter("preciop")));
+            product.setExistencia(new Integer(request.getParameter("existenciap")));
+            product.setTipo(request.getParameter("tipop"));
+            product.setUnidad(request.getParameter("unidadp"));
+            product.setFechMod(Calendar.YEAR+"-"+Calendar.MONTH+"-"+Calendar.DAY_OF_MONTH);
+            ProductQueries insert = new ProductQueries();
+            insert.insertProduct(product);
         
     }
 
