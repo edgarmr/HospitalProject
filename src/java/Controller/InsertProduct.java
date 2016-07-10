@@ -13,7 +13,7 @@ public class InsertProduct extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getParameter("nombrep");
+        String nombre = request.getParameter("nombrep");
         request.getParameter("descrip");
         request.getParameter("provedorp");
         request.getParameter("costop");
@@ -21,6 +21,10 @@ public class InsertProduct extends HttpServlet {
         request.getParameter("existenciap");
         request.getParameter("tipop");
         request.getParameter("unidadp");
+        
+        PrintWriter out = response.getWriter();
+        out.println(nombre);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

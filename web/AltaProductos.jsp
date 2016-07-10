@@ -133,41 +133,37 @@
 
                     <legend> Alta de Productos</legend>
 
-                    <form role="form" action="RegistraProducto" method="post">
+                    <form role="form" action="InsertProduct" method="post">
                         <fieldset>
                             <div class="row">
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" placeholder="Introduce una Descripcion">
+                                    <input type="text" class="form-control" name="nombrep" placeholder="Introduce una Descripcion">
                                 </div>
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Descripcion </label>
-                                    <input type="text" class="form-control" name="nombre" placeholder="Introduce una Descripcion">
+                                    <input type="text" class="form-control" name="descrip" placeholder="Introduce una Descripcion">
                                 </div>
                             </div>
                             <div class="row">                                                                                               
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Proveedor</label>
-                                    <input type="text" class="form-control" name="nombre"
-                                           placeholder="Introduce una Descripcion">
+                                    <input type="text" class="form-control" name="provedorp" placeholder="Nombre provedor(es)">
                                 </div>
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Costo</label>
-                                    <input type="text" class="form-control" name="apellido"
-                                           placeholder="Introduce Costo del Producto">
+                                    <input type="text" class="form-control" name="costop" placeholder="Introduce Costo del Producto">
                                 </div>                       
                             </div>
 
                             <div class="row">                                                                                               
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Precio </label>
-                                    <input type="text" class="form-control" name="apellido"
-                                           placeholder="Introduce el Precio">
+                                    <input type="text" class="form-control" name="preciop" placeholder="Introduce el Precio">
                                 </div>
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Existencia </label>
-                                    <input type="text" class="form-control" name="correo"
-                                           placeholder="Existencia del Producto" required>
+                                    <input type="text" class="form-control" name="existenciap" placeholder="Existencia del Producto" required>
                                 </div>                       
                             </div>
 
@@ -175,14 +171,14 @@
 
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Tipo </label>
-                                    <select class="form-control" name="rol">
+                                    <select class="form-control" name="tipop">
                                         <option value="1">Punto Venta</option>
                                         <option value="2">Otro</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6 col-lg-6">
                                     <label >Unidad </label>
-                                    <input type="text" class="form-control" name="date"
+                                    <input type="text" class="form-control" name="unidadp"
                                            placeholder="Unidades">
                                 </div>                       
                             </div>                                                                                                                                             
