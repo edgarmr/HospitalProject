@@ -19,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Altas de Productos</title>
+        <title>Consulta de Productos</title>
 
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/datepicker.css">
@@ -150,8 +150,8 @@
                             Registro de Productos <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="altasproductos.php"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
+                            <li><a href="AltaProductos.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
+                            <li><a href="ListaProductos.jsp"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
                         </ul>
                     </li>
 

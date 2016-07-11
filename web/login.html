@@ -24,6 +24,12 @@
                     var codif = btoa(contra);
                     $.post('Login', {ncodif: codif, nuser: user}, function (responsetext) {
                         $("#response").text(responsetext);
+                        var text = $("#response").text();
+                        if (text === "Administrador") {
+                            window.location = "inicio.html";
+                        } else if (text === "Recepcionista") {
+                            window.location = "inicio2.html";
+                        }
                     }
                     );
                 }
@@ -62,9 +68,13 @@
                                         </label>
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
+<<<<<<< HEAD
 
                                     <div align="center"><input id="send" type="button" class="btn btn-danger" value="Iniciar sesión"></div><!--onClick="encriptar()"--> 
 
+=======
+                                    <div align="center"><input id="send" type="button" class="btn btn-danger" value="Iniciar sesión"></div><!--onClick="encriptar()"--> 
+>>>>>>> 2445ad3dd1a82c252c55180454594cb644b7bdfc
                                 </fieldset>
                             </form>
                             <div style="color:red" align="center" id="response"></div>

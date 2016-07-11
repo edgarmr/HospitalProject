@@ -32,6 +32,10 @@
         <servlet-name>BorrarProducto</servlet-name>
         <url-pattern>/BorrarProducto</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarProducto</servlet-name>
+        <url-pattern>/RegistrarProducto</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
