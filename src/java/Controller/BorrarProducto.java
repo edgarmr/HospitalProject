@@ -1,7 +1,6 @@
 
 package Controller;
 
-import Model.Clasess.Producto;
 import Model.ProductQueries;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,27 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class ActualizarProducto extends HttpServlet {
+public class BorrarProducto extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Producto product = new Producto();
-            product.setProducto_id(new Integer(request.getParameter("id")));
-            product.setNombre(request.getParameter("nombre"));
-            product.setDescripcion(request.getParameter("descrip"));
-            product.setCosto(new Float(request.getParameter("costo")));
-            product.setPrecio(new Float(request.getParameter("precio")));
-            product.setProveedor(request.getParameter("prove"));
-            product.setExistencia(new Integer(request.getParameter("exist")));
-            product.setTipo(request.getParameter("tipo"));
-            product.setUnidad(request.getParameter("unidad"));
-            product.setUsrMod(1);
-            product.setFechMod("2016-07-10");         
             ProductQueries query = new ProductQueries();
-            query.updateProduct(product);
-            
+            query.deleteProduct(new Integer(request.getParameter("id")));
         }
     }
 
@@ -73,5 +59,4 @@ public class ActualizarProducto extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

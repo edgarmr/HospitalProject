@@ -12,6 +12,8 @@ public class ProductQueries {
     private ResultSet rs;
     private String sqlInsert;
     private String sqlSelect;
+    private String sqlUpdate;
+    private String sqlDelete;
     
     public ProductQueries(){
         Conexion bd = new Conexion();
@@ -76,5 +78,38 @@ public class ProductQueries {
             System.err.println(ex.toString());
         }
         return listPro;
+    }
+    
+    public void updateProduct(Producto p){
+        sqlUpdate = "UPDATE productos\n" +
+"                     SET nombre = '"+p.getNombre()+"',\n" +
+"                     descripcion = '"+p.getDescripcion()+"',\n" +
+"                     costo = "+p.getCosto()+",\n" +
+"                     precio = "+p.getPrecio()+",\n" +
+"                     proveedor = '"+p.getProveedor()+"',\n" +
+"                     existencia = "+p.getExistencia()+",\n" +
+"                     tipo = '"+p.getTipo()+"',\n" +
+"                     unidad = '"+p.getUnidad()+"',\n" +
+"                     proUsrMod = "+p.getUsrMod()+",\n" +
+"                     proFechMod = '"+p.getFechMod()+"'\n" +
+"                     WHERE producto_id = "+p.getProducto_id();
+        try{
+            pstmt = conn.prepareStatement(sqlUpdate);
+            pstmt.executeUpdate();
+            System.out.println("Actualización exitosa");
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void deleteProduct(int id){
+        sqlDelete = "UPDATE productos SET proStatus='Inactivo' WHERE producto_id="+id;
+        try{
+            pstmt = conn.prepareStatement(sqlDelete);
+            pstmt.executeUpdate();
+            System.out.println("Eliminación Exitosa");
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+        }
     }
 }

@@ -31,6 +31,7 @@
                 $("#save").on('click',function(){
                     $.post('ActualizarProducto',
                     {
+                        id: $("#mid").val(),
                         nombre: $("#mnombre").val(),
                         descrip: $("#mdescrip").val(),
                         costo: $("#mcosto").val(),
@@ -54,6 +55,13 @@
                 $("#mexist").val(parseInt($("#exist"+id).html()));
                 $("#mtipo").val($("#tipo"+id).html());
                 $("#munidad").val($("#unidad"+id).html());  
+                $("#mid").val(id);
+            }
+            
+            function deleteRow(id){
+                $.post('BorrarProducto',{id: id},function(response){
+                    $("#titulo").html(response);
+                });
             }
         </script>
     </head>
@@ -70,6 +78,7 @@
                     </div>
                     <div class="modal-body">
                         <form>
+                            <input id="mid" type="hidden">
                             <div class="form-group">
                                 <label for="">Nombre</label>
                                 <input type="text" class="form-control" id="mnombre">
@@ -102,7 +111,7 @@
                                 <label for="">Unidad</label>
                                 <input type="text" class="form-control" id="munidad">
                             </div>
-                            <button id="save" type="button" class="btn btn-success">Enviar</button>
+                            <button id="save" type="button" class="btn btn-success" data-dismiss="modal">Enviar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -241,7 +250,7 @@
                                 <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=listPro[i].getProducto_id()%>')">
                                     <span class='glyphicon glyphicon-refresh'></span>
                                 </button>
-                                <button class='btn btn-danger btn-xs' type='button'>
+                                    <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=listPro[i].getProducto_id()%>')">
                                     <span class='glyphicon glyphicon-trash'></span>
                                 </button>
                             </td>

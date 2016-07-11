@@ -16,6 +16,10 @@
         <servlet-name>ActualizarProducto</servlet-name>
         <servlet-class>Controller.ActualizarProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BorrarProducto</servlet-name>
+        <servlet-class>Controller.BorrarProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InsertProduct</servlet-name>
         <url-pattern>/InsertProduct</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ActualizarProducto</servlet-name>
         <url-pattern>/ActualizarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarProducto</servlet-name>
+        <url-pattern>/BorrarProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
