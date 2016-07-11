@@ -19,7 +19,7 @@
 
         <title>Altas de Productos</title>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/datepicker.css">
 
         <!-- Custom CSS -->
@@ -59,7 +59,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="AltaProductos.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a href="ListaProductos.jsp"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>
+                            <li><a href="ConsultarProducto"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>
                         </ul>
                     </li>
 
@@ -200,7 +200,7 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="js/jquery.js"></script>
+        <script src="js/jquery-2.2.2.min.js"></script>
         <script src="js/main.js"></script>
 
         <!-- Bootstrap Core JavaScript -->

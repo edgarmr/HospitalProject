@@ -9,12 +9,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.jboss.weld.servlet.SessionHolder;
 
 
 public class ActualizarProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            HttpSession sesion = request.getSession(true);
+            String usrMod = sesion.getAttribute("idSesion").toString();
+            
             Producto product = new Producto();
             product.setProducto_id(new Integer(request.getParameter("id")));
             product.setNombre(request.getParameter("nombre"));
@@ -25,7 +31,7 @@ public class ActualizarProducto extends HttpServlet {
             product.setExistencia(new Integer(request.getParameter("exist")));
             product.setTipo(request.getParameter("tipo"));
             product.setUnidad(request.getParameter("unidad"));
-            product.setUsrMod(1);
+            product.setUsrMod(new Integer(usrMod));
             product.setFechMod("2016-07-10");         
             ProductQueries query = new ProductQueries();
             query.updateProduct(product);

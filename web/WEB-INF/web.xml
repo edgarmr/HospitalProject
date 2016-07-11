@@ -16,6 +16,10 @@
         <servlet-name>BorrarProducto</servlet-name>
         <servlet-class>Controller.BorrarProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistrarProducto</servlet-name>
+        <servlet-class>Controller.RegistrarProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>

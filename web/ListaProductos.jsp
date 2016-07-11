@@ -60,7 +60,8 @@
             
             function deleteRow(id){
                 $.post('BorrarProducto',{id: id},function(response){
-                    $("#titulo").html(response);
+                    $("#"+id).hide();
+                    
                 });
             }
         </script>
@@ -219,6 +220,9 @@
                     <button type="button" class="btn btn-danger">Abrir/Cerrar Menu</button>
                 </a>
                 <h1 id="titulo" class="text-center"> Lista de productos </h1>
+                <div class="table-responsive">
+                    
+                
                 <table class="table table-hover" style="margin-top: 20px;">
                     <thead>
                         <tr>
@@ -237,7 +241,7 @@
                             if(listPro!=null){
                                 for(int i=0; i<listPro.length; i++){
                         %>
-                        <tr>
+                        <tr id="<%=listPro[i].getProducto_id()%>">
                             <td id="nombre<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getNombre() %> </td>
                             <td id="descrip<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getDescripcion() %> </td>
                             <td id="costo<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getCosto() %> </td>
@@ -260,7 +264,8 @@
                             }
                         %>
                     </tbody>
-                </table> 
+                </table>
+                </div>
             </div>
             <!-- /#page-content-wrapper -->
         </div>

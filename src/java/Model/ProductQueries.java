@@ -34,10 +34,8 @@ public class ProductQueries {
             pstmt.setInt(6,p.getExistencia());
             pstmt.setString(7,p.getTipo());
             pstmt.setString(8,p.getUnidad());
-            //Aquí va la session del usuario.
-            pstmt.setInt(9,1);
-            pstmt.setInt(10,1);
-            //
+            pstmt.setInt(9,p.getUsrAlta());
+            pstmt.setInt(10,p.getUsrMod());
             pstmt.setString(11,p.getFechMod());
             pstmt.executeUpdate();
             conn.close();
