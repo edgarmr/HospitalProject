@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 public class QueryLogin {
     private Connection c;
-    
-    public QueryLogin(){
+
+    public QueryLogin() {
         Conexion obj = new Conexion();
-        c=obj.Conexion();
+        c = obj.Conexion();
     }
-    
+
     public ResultSet Consultar(String Cad) {
         try {
             PreparedStatement st = c.prepareStatement(Cad);
@@ -22,5 +22,5 @@ public class QueryLogin {
             System.err.println(e.toString());
             return null;
         }
-    }    
+    }
 }
