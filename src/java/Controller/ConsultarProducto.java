@@ -2,34 +2,35 @@
 package Controller;
 
 import Model.Clasess.Producto;
-import Model.*;
+import Model.ProductQueries;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class InsertProduct extends HttpServlet {
+public class ConsultarProducto extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            Calendar fecha = new GregorianCalendar();
-            String date = fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DAY_OF_MONTH);
-            Producto product = new Producto();
-            product.setNombre(request.getParameter("nombrep"));
-            product.setDescripcion(request.getParameter("descrip"));
-            product.setProveedor(request.getParameter("provedorp"));
-            product.setCosto(new Float(request.getParameter("costop")));
-            product.setPrecio(new Float(request.getParameter("preciop")));
-            product.setExistencia(new Integer(request.getParameter("existenciap")));
-            product.setTipo(request.getParameter("tipop"));
-            product.setUnidad(request.getParameter("unidadp"));
-            product.setFechMod(date);
-            ProductQueries insert = new ProductQueries();
-            insert.insertProduct(product);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            ProductQueries query = new ProductQueries();
+            Producto []producto =  query.getProductos();
+            
+            
+            
+//            for(int i=0; i<producto.length; i++){
+//                out.println(producto[i].getProducto_id()+" "+producto[i].getNombre());
+//            }
+            
+            request.setAttribute("listaPro",producto);
+            RequestDispatcher view = request.getRequestDispatcher("ListaProductos.jsp");
+            view.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

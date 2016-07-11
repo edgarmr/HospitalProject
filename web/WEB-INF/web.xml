@@ -2,11 +2,23 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>InsertProduct</servlet-name>
-        <servlet-class>Controller.InsertProduct</servlet-class>
+        <servlet-class>Controller.RegistarProducto</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarProducto</servlet-name>
+        <servlet-class>Controller.ConsultarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarProducto</servlet-name>
+        <servlet-class>Controller.ActualizarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarProducto</servlet-name>
+        <servlet-class>Controller.BorrarProducto</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InsertProduct</servlet-name>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarProducto</servlet-name>
+        <url-pattern>/ConsultarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarProducto</servlet-name>
+        <url-pattern>/ActualizarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarProducto</servlet-name>
+        <url-pattern>/BorrarProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

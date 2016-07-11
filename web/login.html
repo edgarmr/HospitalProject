@@ -14,7 +14,6 @@
         <!-- Custom Fonts -->
         <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/bootstrap-social.css">
-        <script src="js/jquery.js"></script>
         <script src="js/jquery-2.2.2.min.js"></script>
         <script src="js/operaciones.js"></script>
         <script type="text/javascript">
@@ -25,7 +24,12 @@
                     var codif = btoa(contra);
                     $.post('Login', {ncodif: codif, nuser: user}, function (responsetext) {
                         $("#response").text(responsetext);
-                        window.location="";
+                        var text = $("#response").text();
+                        if (text === "Administrador") {
+                            window.location = "inicio.html";
+                        } else if (text === "Recepcionista") {
+                            window.location = "inicio2.html";
+                        }
                     }
                     );
                 }
