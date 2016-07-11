@@ -20,7 +20,6 @@ public class Login extends HttpServlet {
             //response.getWriter().write(username+"       ");
             //String password = (request.getParameter("password"));
             String encripted = (request.getParameter("ncodif"));
-            response.getWriter().write(encripted);
             try {
                 QueryLogin obj = new QueryLogin();
                 String query = "SELECT * FROM usuarios where usrLogin='" + username + "'";
@@ -33,6 +32,7 @@ public class Login extends HttpServlet {
                         sesion.setAttribute("idSesion", id);
                         long fechaCreacion = sesion.getCreationTime();
                         long ultimoAcceso = sesion.getLastAccessedTime();
+                        response.getWriter().write("Correcto");
                         //out.println(sesion.getAttribute("idSesion"));
                     } else {
                         response.getWriter().write("Contraseña incorrecta");

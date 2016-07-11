@@ -25,6 +25,7 @@
                     var codif = btoa(contra);
                     $.post('Login', {ncodif: codif, nuser: user}, function (responsetext) {
                         $("#response").text(responsetext);
+                        window.location="";
                     }
                     );
                 }
