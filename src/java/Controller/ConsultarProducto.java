@@ -1,46 +1,35 @@
+
 package Controller;
 
+import Model.Clasess.Producto;
+import Model.ProductQueries;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import Model.QueryLogin;
-import java.sql.ResultSet;
 
-public class Login extends HttpServlet {
+
+public class ConsultarProducto extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String username = request.getParameter("username");
-            //String password = (request.getParameter("password"));
-            String encripted = (request.getParameter("password"));
-            out.println(username + "<br>");
-            //out.println(password+"<br>");            
-            out.println(encripted + "<br>");
-            try {
-                QueryLogin obj = new QueryLogin();
-                String query = "SELECT * FROM usuarios where usrLogin='" + username + "'";
-                ResultSet rs = obj.Consultar(query);
-                if (rs.next() == true) {
-                    String pass = rs.getString("usrPassword");
-                    if (pass.equals(encripted)) {
-                        HttpSession sesion = request.getSession(true);
-                        int id = rs.getInt("usuario_id");
-                        sesion.setAttribute("idSesion", id);
-                        //out.println(sesion.getAttribute("idSesion"));
-                    } else {
-                        out.println("CONTRASEÑA INCORRECTA");
-                    }
-                } else {
-                    out.println("ese usuario no existe");
-                }
-            } catch (Exception e) {
-                out.println(e.toString());
-            }
+            ProductQueries query = new ProductQueries();
+            Producto []producto =  query.getProductos();
+            
+            
+            
+//            for(int i=0; i<producto.length; i++){
+//                out.println(producto[i].getProducto_id()+" "+producto[i].getNombre());
+//            }
+            
+            request.setAttribute("listaPro",producto);
+            RequestDispatcher view = request.getRequestDispatcher("ListaProductos.jsp");
+            view.forward(request, response);
         }
     }
 
@@ -82,5 +71,4 @@ public class Login extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

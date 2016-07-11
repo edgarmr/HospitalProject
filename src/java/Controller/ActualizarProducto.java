@@ -1,3 +1,4 @@
+
 package Controller;
 
 import java.io.IOException;
@@ -6,41 +7,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import Model.QueryLogin;
-import java.sql.ResultSet;
 
-public class Login extends HttpServlet {
+
+public class ActualizarProducto extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String username = request.getParameter("username");
-            //String password = (request.getParameter("password"));
-            String encripted = (request.getParameter("password"));
-            out.println(username + "<br>");
-            //out.println(password+"<br>");            
-            out.println(encripted + "<br>");
-            try {
-                QueryLogin obj = new QueryLogin();
-                String query = "SELECT * FROM usuarios where usrLogin='" + username + "'";
-                ResultSet rs = obj.Consultar(query);
-                if (rs.next() == true) {
-                    String pass = rs.getString("usrPassword");
-                    if (pass.equals(encripted)) {
-                        HttpSession sesion = request.getSession(true);
-                        int id = rs.getInt("usuario_id");
-                        sesion.setAttribute("idSesion", id);
-                        //out.println(sesion.getAttribute("idSesion"));
-                    } else {
-                        out.println("CONTRASEÑA INCORRECTA");
-                    }
-                } else {
-                    out.println("ese usuario no existe");
-                }
-            } catch (Exception e) {
-                out.println(e.toString());
-            }
+            String nombre = request.getParameter("nombre");
+            out.println(nombre);
         }
     }
 
