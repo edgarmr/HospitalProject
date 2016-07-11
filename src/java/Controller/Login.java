@@ -15,12 +15,11 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String username = request.getParameter("username");
+            String username = request.getParameter("nuser");
+            //response.getWriter().write(username+"       ");
             //String password = (request.getParameter("password"));
-            String encripted = (request.getParameter("password"));
-            out.println(username + "<br>");
-            //out.println(password+"<br>");            
-            out.println(encripted + "<br>");
+            String encripted = (request.getParameter("ncodif"));
+            response.getWriter().write(encripted);
             try {
                 QueryLogin obj = new QueryLogin();
                 String query = "SELECT * FROM usuarios where usrLogin='" + username + "'";
@@ -31,12 +30,14 @@ public class Login extends HttpServlet {
                         HttpSession sesion = request.getSession(true);
                         int id = rs.getInt("usuario_id");
                         sesion.setAttribute("idSesion", id);
+                        long fechaCreacion = sesion.getCreationTime();
+                        long ultimoAcceso = sesion.getLastAccessedTime();
                         //out.println(sesion.getAttribute("idSesion"));
                     } else {
-                        out.println("CONTRASEÑA INCORRECTA");
+                        response.getWriter().write("Contraseña incorrecta");
                     }
                 } else {
-                    out.println("ese usuario no existe");
+                    response.getWriter().write("Ese usuario no existe");
                 }
             } catch (Exception e) {
                 out.println(e.toString());
