@@ -9,10 +9,8 @@
 <% Producto[] listPro = (Producto[]) request.getAttribute("listaPro"); %>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <link rel="shortcut icon" href="img\\logo.png">
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +23,8 @@
         <link rel="stylesheet" href="css/datepicker.css">
         <!-- Custom CSS -->
         <link href="css/simple-sidebar.css" rel="stylesheet">
+        <link href="css/sweetalert.css" rel="stylesheet">
+        <script src="js/sweetalert.min.js"> </script>
         <script src="js/jquery-2.2.2.min.js"></script>
         <script>
             $(document).ready(function () {
@@ -52,12 +52,30 @@
             }
 
             function deleteRow(id) {
-                $.post('BorrarProducto', {id: id}, function (response) {
-                    $("#" + id).hide();
-
-                });
+                swal({
+                    title: "¿Seguro de eliminar el registro?",
+                    text: "No podras recuperar este registro posteriormente",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "¡Sí borrar!",
+                    closeOnConfirm: false
+                },
+                function(){
+                    $.post('BorrarProducto', {id: id}, function (response) {
+                        $("#" + id).hide();
+                    });
+                    swal("Registro eliminado","","success");
+                }
+                );
             }
         </script>
+        <style type="text/css">
+            div.modal-header,div.modal-footer{
+                background-color: #E74C3C;
+                color: #FDFEFE;
+            }
+        </style>
     </head>
     <body>
         <!-- Modal -->
@@ -67,7 +85,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title text-center">Actualización</h4>
+                        <h3 class="modal-title text-center">Actualización</h3>
                     </div>
                     <div class="modal-body">
                         <form action="ActualizarProducto" method="post">
@@ -108,7 +126,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        
                     </div>
                 </div>
             </div>
@@ -234,23 +252,25 @@
                         </thead>
                         <tbody>
                             <%
+                                int id=0;
                                 if (listPro != null) {
                                     for (int i = 0; i < listPro.length; i++) {
+                                        id = listPro[i].getProducto_id();
                             %>
-                            <tr id="<%=listPro[i].getProducto_id()%>">
-                                <td id="nombre<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getNombre()%> </td>
-                                <td id="descrip<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getDescripcion()%> </td>
-                                <td id="costo<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getCosto()%> </td>
-                                <td id="precio<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getPrecio()%> </td>
-                                <td id="prove<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getProveedor()%> </td>
-                                <td id="exist<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getExistencia()%> </td>
-                                <td id="tipo<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getTipo()%> </td>
-                                <td id="unidad<%=listPro[i].getProducto_id()%>"> <%= listPro[i].getUnidad()%> </td>
+                            <tr id="<%=id%>">
+                                <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
+                                <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
+                                <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
+                                <td id="precio<%=id%>"> <%= listPro[i].getPrecio()%> </td>
+                                <td id="prove<%=id%>"> <%= listPro[i].getProveedor()%> </td>
+                                <td id="exist<%=id%>"> <%= listPro[i].getExistencia()%> </td>
+                                <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
+                                <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
                                 <td>
-                                    <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=listPro[i].getProducto_id()%>')">
+                                    <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
                                         <span class='glyphicon glyphicon-refresh'></span>
                                     </button>
-                                    <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=listPro[i].getProducto_id()%>')">
+                                    <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=id%>')">
                                         <span class='glyphicon glyphicon-trash'></span>
                                     </button>
                                 </td>
