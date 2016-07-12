@@ -28,24 +28,6 @@
         <script src="js/jquery-2.2.2.min.js"></script>
         <script>
             $(document).ready(function(){
-                $("#save").on('click',function(){
-                    $.post('ActualizarProducto',
-                    {
-                        id: $("#mid").val(),
-                        nombre: $("#mnombre").val(),
-                        descrip: $("#mdescrip").val(),
-                        costo: $("#mcosto").val(),
-                        precio: $("#mprecio").val(),
-                        prove: $("#mprove").val(),
-                        exist: $("#mexist").val(),
-                        tipo: $("#mtipo").val(),
-                        unidad: $("#munidad").val()
-                    },
-                    function(response){
-                        $("#titulo").html(response);
-                    });  
-            });
-            
             (function($) {
                 $("#searchProduct").on('keyup', function() {
                     var rex = new RegExp($(this).val(), 'i');
@@ -53,9 +35,10 @@
                     $("tr").filter(function() {
                         return rex.test($(this).text());
                     }).show();
-                });
-            }(jQuery));
-        });
+                 });
+                }(jQuery));
+            });
+            
             function updateRow(id){
                 $("#mnombre").val($("#nombre"+id).html());
                 $("#mdescrip").val($("#descrip"+id).html());
@@ -71,7 +54,6 @@
             function deleteRow(id){
                 $.post('BorrarProducto',{id: id},function(response){
                     $("#"+id).hide();
-                    
                 });
             }
         </script>
@@ -88,41 +70,41 @@
                         <h4 class="modal-title text-center">Actualización</h4>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <input id="mid" type="hidden">
+                        <form action="ActualizarProducto" method="post">
+                            <input id="mid" name="id" type="hidden">
                             <div class="form-group">
                                 <label for="">Nombre</label>
-                                <input type="text" class="form-control" id="mnombre">
+                                <input type="text" class="form-control" id="mnombre" name="nombre">
                             </div>
                             <div class="form-group">
                                 <label for="">Descripción</label>
-                                <input type="text" class="form-control" id="mdescrip">
+                                <input type="text" class="form-control" id="mdescrip" name="descrip">
                             </div>
                             <div class="form-group">
                                 <label for="">Costo</label>
-                                <input type="text" class="form-control" id="mcosto">
+                                <input type="text" class="form-control" id="mcosto" name="costo">
                             </div>
                             <div class="form-group">
                                 <label for="">Precio</label>
-                                <input type="text" class="form-control" id="mprecio">
+                                <input type="text" class="form-control" id="mprecio" name="precio">
                             </div>
                             <div class="form-group">
                                 <label for="">Proveedor</label>
-                                <input type="text" class="form-control" id="mprove">
+                                <input type="text" class="form-control" id="mprove" name="prove">
                             </div>
                             <div class="form-group">
                                 <label for="">Existencia</label>
-                                <input type="number" class="form-control" id="mexist">
+                                <input type="number" class="form-control" id="mexist" name="exist">
                             </div>
                             <div class="form-group">
                                 <label for="">Tipo</label>
-                                <input type="text" class="form-control" id="mtipo">
+                                <input type="text" class="form-control" id="mtipo" name="tipo">
                             </div>
                             <div class="form-group">
                                 <label for="">Unidad</label>
-                                <input type="text" class="form-control" id="munidad">
+                                <input type="text" class="form-control" id="munidad" name="unidad">
                             </div>
-                            <button id="save" type="button" class="btn btn-success" data-dismiss="modal">Enviar</button>
+                            <button id="save" type="submit" class="btn btn-success">Enviar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
