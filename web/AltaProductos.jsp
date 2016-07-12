@@ -107,7 +107,7 @@
                 <br>
                 <div class="container-fluid">
                     <a href="#menu-toggle" id="menu-toggle">
-                        <button type="button" class="btn btn-danger">Abrir/Cerrar Menu</button>
+                        <button type="button" class="btn btn-danger">Abrir/Cerrar Menú</button>
                     </a>
                     <br><br>
 
