@@ -34,6 +34,7 @@ public class RegistrarProducto extends HttpServlet {
         product.setFechMod(date);
         ProductQueries insert = new ProductQueries();
         insert.insertProduct(product);
+        response.sendRedirect("AltaProductos.jsp");
     }
 
     @Override
