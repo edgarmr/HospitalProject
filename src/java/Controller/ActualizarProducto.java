@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.jboss.weld.servlet.SessionHolder;
 
 
 public class ActualizarProducto extends HttpServlet {
@@ -35,6 +34,7 @@ public class ActualizarProducto extends HttpServlet {
             product.setFechMod("2016-07-10");         
             ProductQueries query = new ProductQueries();
             query.updateProduct(product);
+            response.sendRedirect("ConsultarProducto");
             
         }
     }

@@ -22,13 +22,12 @@
                     var user = document.getElementById("user").value;
                     var contra = document.getElementById("pass").value;
                     var codif = btoa(contra);
+                    //alert(codif);
                     $.post('Login', {ncodif: codif, nuser: user}, function (responsetext) {
                         $("#response").text(responsetext);
                         var text = $("#response").text();
-                        if (text === "Administrador") {
-                            window.location = "inicio.html";
-                        } else if (text === "Recepcionista") {
-                            window.location = "inicio2.html";
+                        if (text === "Correcto") {
+                            window.location = "Menu.jsp";
                         }
                     }
                     );

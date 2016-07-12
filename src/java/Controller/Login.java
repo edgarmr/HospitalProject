@@ -26,12 +26,12 @@ public class Login extends HttpServlet {
                     if (pass.equals(encripted)) {
                         HttpSession sesion = request.getSession(true);
                         int id = rs.getInt("usuario_id");
+                        String rol = rs.getString("usrRol");
                         sesion.setAttribute("idSesion", id);
-                        long fechaCreacion = sesion.getCreationTime();
-                        long ultimoAcceso = sesion.getLastAccessedTime();
-                        String tipo = rs.getString("usrRol");
-                        response.getWriter().write(tipo);
-                        //out.println(sesion.getAttribute("idSesion"));
+                        sesion.setAttribute("rolSesion", rol);
+                        //long fechaCreacion = sesion.getCreationTime();
+                        //long ultimoAcceso = sesion.getLastAccessedTime();
+                        response.getWriter().write("Correcto");
                     } else {
                         response.getWriter().write("Contraseña incorrecta");
                     }

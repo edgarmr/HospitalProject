@@ -1,34 +1,22 @@
 package Controller;
 
-import Model.Clasess.Producto;
-import Model.ProductQueries;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+public class Logout extends HttpServlet {
 
-public class ConsultarProducto extends HttpServlet {
-
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ProductQueries query = new ProductQueries();
-            Producto []producto =  query.getProductos();
-            
-            
-            
-//            for(int i=0; i<producto.length; i++){
-//                out.println(producto[i].getProducto_id()+" "+producto[i].getNombre());
-//            }
-            
-            request.setAttribute("listaPro",producto);
-            RequestDispatcher view = request.getRequestDispatcher("ListaProductos.jsp");
-            view.forward(request, response);
+            HttpSession sesion = request.getSession(true);
+            sesion.invalidate();
+            response.sendRedirect("index.html");
         }
     }
 
@@ -70,4 +58,5 @@ public class ConsultarProducto extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
