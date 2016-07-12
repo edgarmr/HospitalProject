@@ -45,6 +45,16 @@
                         $("#titulo").html(response);
                     });  
             });
+            
+            (function($) {
+                $("#searchProduct").on('keyup', function() {
+                    var rex = new RegExp($(this).val(), 'i');
+                    $("tr").hide();
+                    $("tr").filter(function() {
+                        return rex.test($(this).text());
+                    }).show();
+                });
+            }(jQuery));
         });
             function updateRow(id){
                 $("#mnombre").val($("#nombre"+id).html());
@@ -220,9 +230,15 @@
                     <button type="button" class="btn btn-danger">Abrir/Cerrar Menu</button>
                 </a>
                 <h1 id="titulo" class="text-center"> Lista de productos </h1>
-                <div class="table-responsive">
-                    
                 
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchProduct" placeholder="Búsqueda de productos (por nombre, descripción etc...)">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
                 <table class="table table-hover" style="margin-top: 20px;">
                     <thead>
                         <tr>
