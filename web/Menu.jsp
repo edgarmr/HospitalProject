@@ -21,7 +21,7 @@
                     <li class="sidebar-brand">
                         <a>
                             <%
-                                HttpSession sesion = request.getSession(true);
+                                HttpSession sesion = request.getSession();
                                 String rol = sesion.getAttribute("rolSesion").toString();
                             %>
                             Bienvenido <%=rol%>
@@ -34,7 +34,7 @@
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
                             <span class="glyphicon glyphicon-user"  aria-hidden="true"></span>  
-                            Usuarios <span class="caret"></span>
+                            Personal <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
@@ -80,14 +80,14 @@
                         <ul class="dropdown-menu">
                             <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Hereditarios </span></a></li>
                             <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Patológicos</span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> No Patológicos</span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> Crónicas</span> </a></li>                             
+                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">No&nbsp;Patológicos</span></a></li>
+                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Crónicas</span> </a></li>                             
                         </ul>
                     </li>
                     <li>
                         <a href="Logout"><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>Cerrar Sesión</a>
                     </li>
-                    <!-- Boton Cerrar Menu -->
+                    <!-- Boton Cerrar Menu 
                     <div id="page-content-wrapper">
                         <div class="container-fluid">
                             <div class="row">
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </ul>
             </div> <!-- Fin Div de Barra Lateral-->
             <!-- Page Content -->
@@ -107,10 +107,10 @@
                     <div class="row">
                         <div class="col-lg-12">                        
                             <a href="#menu-toggle" id="menu-toggle">
-                                <button type="button" class="btn btn-danger">Abrir/Cerrar Menú</button>
+                                <button type="button"><img src="img/izquierda.jpg"></button>
                             </a>
-                            <h1>Bienvenido</h1>
-                            <p>Ahora que te has logueado correctamente a nuestro sistema, podras ver y controlar los datos del hospital, por lo que te pedimos que manejes los datos con responsabilidad, y respeto ya que es información altamente importante.
+                            <h1>Bienvenido <%=rol%></h1>
+                            <p>Ahora que te has logueado correctamente a nuestro sistema, podrás ver y controlar los datos del hospital, por lo que te pedimos que manejes los datos con responsabilidad, y respeto ya que es información altamente importante.
                                 <br><br>
                             <h2>Estas son tus funciones:</h2>
                             <br>    
@@ -119,7 +119,7 @@
                                     <%if (rol.equals("Administrador")) {%>
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="panel panel-primary">
-                                            <div class="panel-heading">Control de Personal</div>
+                                            <div class="panel-heading">Personal</div>
                                             <div class="panel-body">
                                                 <p>Aquí podrás realizar modificaciones en los registros del personal del hospital: </p>
                                                 <ul >
@@ -133,7 +133,7 @@
                                     <%}%>
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="panel panel-primary">
-                                            <div class="panel-heading">Catálogo de Pacientes</div>
+                                            <div class="panel-heading">Pacientes</div>
                                             <div class="panel-body">
                                                 <p>Aquí podrás realizar modificaciones en los registros de los pacientes del hospital: </p>
                                                 <ul >
@@ -146,7 +146,7 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="panel panel-primary">
-                                            <div class="panel-heading">Catálogo de Expedientes Clínicos</div>
+                                            <div class="panel-heading">Expedientes Clínicos</div>
                                             <div class="panel-body">
                                                 <p>Aquí podrás realizar modificaciones en los registros de expedientes clínicos de los pacientes: </p>
                                                 <ul >
@@ -159,9 +159,9 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="panel panel-primary">
-                                            <div class="panel-heading">Catálogo de Antecedentes</div>
+                                            <div class="panel-heading">Antecedentes</div>
                                             <div class="panel-body">
-                                                <p>Aquí podrás hacer las siguientes modificaciones en los registros de antecedentes clínicos de los pacientes: </p>
+                                                <p>Aquí podrás realizar modificaciones en los registros de antecedentes clínicos de los pacientes: </p>
                                                 <ul>
                                                     <li>Hereditarios</li>
                                                     <li>Patológicos</li>
@@ -192,12 +192,12 @@
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
-        <!-- Menu Toggle2 Script 2 -->
+        <!-- Menu Toggle2 Script 2
         <script>
             $("#menu-toggle2").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
-        </script>
+        </script>-->
     </body>
 </html>

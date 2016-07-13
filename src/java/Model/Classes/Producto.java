@@ -1,5 +1,5 @@
 
-package Model.Clasess;
+package Model.Classes;
 
 public class Producto {
     private int producto_id;
