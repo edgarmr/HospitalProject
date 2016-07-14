@@ -4,7 +4,7 @@
     Author     : Edgar
 --%>
 
-<%@page import="Model.Clasess.Producto"%>
+<%@page import="Model.Classes.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Producto[] listPro = (Producto[]) request.getAttribute("listaPro"); %>
 <!DOCTYPE html>
@@ -14,31 +14,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
         <title>Consulta de Productos</title>
-
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/datepicker.css">
-        <!-- Custom CSS -->
         <link href="css/simple-sidebar.css" rel="stylesheet">
         <link href="css/sweetalert.css" rel="stylesheet">
-        <script src="js/sweetalert.min.js"> </script>
+        <script src="js/sweetalert.min.js"></script>
         <script src="js/jquery-2.2.2.min.js"></script>
         <script>
             $(document).ready(function () {
-            (function ($) {
-                $("#searchProduct").on('keyup', function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $("tr").hide();
-                    $("tr").filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                });
-            }(jQuery));
+                (function ($) {
+                    $("#searchProduct").on('keyup', function () {
+                        var rex = new RegExp($(this).val(), 'i');
+                        $("tr").hide();
+                        $("tr").filter(function () {
+                            return rex.test($(this).text());
+                        }).show();
+                    });
+                }(jQuery));
             });
-            
+
             function updateRow(id) {
                 $("#mnombre").val($("#nombre" + id).html());
                 $("#mdescrip").val($("#descrip" + id).html());
@@ -61,12 +56,12 @@
                     confirmButtonText: "¡Sí borrar!",
                     closeOnConfirm: false
                 },
-                function(){
-                    $.post('BorrarProducto', {id: id}, function (response) {
-                        $("#" + id).hide();
-                    });
-                    swal("Registro eliminado","","success");
-                }
+                        function () {
+                            $.post('BorrarProducto', {id: id}, function (response) {
+                                $("#" + id).hide();
+                            });
+                            swal("Registro eliminado", "", "success");
+                        }
                 );
             }
         </script>
@@ -126,197 +121,83 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        
+
                     </div>
                 </div>
             </div>
         </div>
+        <div id="page-content-wrapper">
+            <a href="#menu-toggle" id="menu-toggle">
+                <button type="button" class="btn btn-danger">Abrir/Cerrar Menú</button>
+            </a>
+            <h1 id="titulo" class="text-center"> Lista de productos </h1>
 
-        <div id="wrapper">
-            <!-- Sidebar -->
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a>
-                            <%
-                                HttpSession sesion = request.getSession(true);
-                                String rol = sesion.getAttribute("rolSesion").toString();
-                            %>
-                            Bienvenido <%=rol%>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Menu.jsp" cl><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
-                    </li>
-                    <%if (rol.equals("Administrador")) {%>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-user"  aria-hidden="true"></span>  
-                            Usuarios <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
-                        </ul>
-                    </li>
-                    <%}%>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-tags"  aria-hidden="true"></span>  
-                            Productos <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="AltaProductos.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a href="ConsultarProducto"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-th-list"  aria-hidden="true"></span>  
-                            Pacientes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span>  
-                            Cotizaciones <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-time"  aria-hidden="true"></span>  
-                            Antecedentes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Hereditarios </span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Patológicos</span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> No Patológicos</span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> Crónicas</span> </a></li>                             
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="Logout"><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>Cerrar Sesión</a>
-                    </li>
-                    <!-- Boton Cerrar Menu -->
-                    <div id="page-content-wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a href="#menu-toggle2" id="menu-toggle2"> 
-                                        <button type="button" class="btn btn-primary">Cerrar Menú</button> 
-                                    </a>             
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ul>
-            </div><!-- Fin Div de Barra Lateral-->
-            <!-- /#sidebar-wrapper -->
-
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <a href="#menu-toggle" id="menu-toggle">
-                    <button type="button" class="btn btn-danger">Abrir/Cerrar Menú</button>
-                </a>
-                <h1 id="titulo" class="text-center"> Lista de productos </h1>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="searchProduct" placeholder="Búsqueda de productos (por nombre, descripción etc...)">
-                        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
-                    </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchProduct" placeholder="Búsqueda de productos (por nombre, descripción etc...)">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
                 </div>
-
-                <div class="table-responsive">
-                    <table class="table table-hover" style="margin-top: 20px;">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Costo</th>
-                                <th>Precio</th>
-                                <th>Proveedor</th>
-                                <th>Existencia</th>
-                                <th>Tipo</th>
-                                <th>Unidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                int id=0;
-                                if (listPro != null) {
-                                    for (int i = 0; i < listPro.length; i++) {
-                                        id = listPro[i].getProducto_id();
-                            %>
-                            <tr id="<%=id%>">
-                                <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
-                                <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
-                                <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
-                                <td id="precio<%=id%>"> <%= listPro[i].getPrecio()%> </td>
-                                <td id="prove<%=id%>"> <%= listPro[i].getProveedor()%> </td>
-                                <td id="exist<%=id%>"> <%= listPro[i].getExistencia()%> </td>
-                                <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
-                                <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
-                                <td>
-                                    <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
-                                        <span class='glyphicon glyphicon-refresh'></span>
-                                    </button>
-                                    <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=id%>')">
-                                        <span class='glyphicon glyphicon-trash'></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <%
-                                    }
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover" style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                            <th>Proveedor</th>
+                            <th>Existencia</th>
+                            <th>Tipo</th>
+                            <th>Unidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            int id = 0;
+                            if (listPro != null) {
+                                for (int i = 0; i < listPro.length; i++) {
+                                    id = listPro[i].getProducto_id();
+                        %>
+                        <tr id="<%=id%>">
+                            <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
+                            <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
+                            <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
+                            <td id="precio<%=id%>"> <%= listPro[i].getPrecio()%> </td>
+                            <td id="prove<%=id%>"> <%= listPro[i].getProveedor()%> </td>
+                            <td id="exist<%=id%>"> <%= listPro[i].getExistencia()%> </td>
+                            <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
+                            <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
+                            <td>
+                                <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
+                                    <span class='glyphicon glyphicon-refresh'></span>
+                                </button>
+                                <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=id%>')">
+                                    <span class='glyphicon glyphicon-trash'></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <%
                                 }
-                            %>
-                        </tbody>
-                    </table>
-                </div>
+                            }
+                        %>
+                    </tbody>
+                </table>
             </div>
-            <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
-
         <script src="js/main.js"></script>
-
-
-        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
-
         <script>
-                                        $(function () {
-                                            $('.datepicker').datepicker();
-                                        });
+                                    $(function () {
+                                        $('.datepicker').datepicker();
+                                    });
         </script>
-
-        <!-- Menu Toggle Script -->
         <script>
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
-
-        <!-- Menu Toggle2 Script 2 -->
-        <script>
-            $("#menu-toggle2").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-        </script>
-
     </body>
 </html>

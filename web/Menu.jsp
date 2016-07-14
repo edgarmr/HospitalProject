@@ -1,34 +1,34 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession();
+    String rol = sesion.getAttribute("rolSesion").toString();
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="shortcut icon" href="img\\logo.png">
+        <link rel="shortcut icon" href="img/logo.png">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Menú - Hospital México</title>
-        <!-- Bootstrap Core CSS -->
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom CSS -->
         <link href="css/simple-sidebar.css" rel="stylesheet">
+        <script>
+            function myFunction(page){
+                $("#page-content-wrapper").load(page);
+            }
+        </script>
     </head>
     <body>
         <div id="wrapper">
-            <!-- Sidebar -->
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
-                        <a>
-                            <%
-                                HttpSession sesion = request.getSession();
-                                String rol = sesion.getAttribute("rolSesion").toString();
-                            %>
-                            Bienvenido <%=rol%>
-                        </a>
+                        <div align="center"><a>Bienvenido</a></div>
                     </li>
                     <li>
-                        <a href="Menu.jsp" cl><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
+                        <a href="Menu.jsp"><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
                     </li>
                     <%if (rol.equals("Administrador")) {%>
                     <li class="dropdown">
@@ -37,8 +37,8 @@
                             Personal <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
+                            <li><a onclick="myFunction('AltaUsuarios.jsp')"> <span class="glyphicon glyphicon-plus" aria-hidden="true">Altas</span></a></li>
+                            <li><a onclick="myFunction('ConsultarUsuario')"> <span class="glyphicon glyphicon-pencil" aria-hidden="true">Consultas</span> </a></li>                             
                         </ul>
                     </li>
                     <%}%>
@@ -48,8 +48,8 @@
                             Productos <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="AltaProductos.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a href="ConsultarProducto"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
+                            <li><a onclick="myFunction('AltaProductos.jsp')"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
+                            <li><a onclick="myFunction('ConsultarProducto')"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -87,21 +87,8 @@
                     <li>
                         <a href="Logout"><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>Cerrar Sesión</a>
                     </li>
-                    <!-- Boton Cerrar Menu 
-                    <div id="page-content-wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a href="#menu-toggle2" id="menu-toggle2"> 
-                                        <button type="button" class="btn btn-primary">Cerrar Menú</button> 
-                                    </a>             
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
                 </ul>
-            </div> <!-- Fin Div de Barra Lateral-->
-            <!-- Page Content -->
+            </div> 
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -110,7 +97,9 @@
                                 <button type="button"><img src="img/izquierda.jpg"></button>
                             </a>
                             <h1>Bienvenido <%=rol%></h1>
-                            <p>Ahora que te has logueado correctamente a nuestro sistema, podrás ver y controlar los datos del hospital, por lo que te pedimos que manejes los datos con responsabilidad, y respeto ya que es información altamente importante.
+                            <p>Ahora que te has logueado correctamente a nuestro sistema, podrás ver y
+                                controlar los datos del hospital, por lo que te pedimos que manejes los
+                                datos con responsabilidad, y respeto ya que es información altamente importante.</p>
                                 <br><br>
                             <h2>Estas son tus funciones:</h2>
                             <br>    
@@ -173,31 +162,18 @@
                                     </div>
                                 </div>
                             </div>
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#wrapper -->
-        <!-- jQuery -->
         <script src="js/jquery-2.2.2.min.js"></script>
-        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
-        <!-- Menu Toggle Script -->
         <script>
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
-        <!-- Menu Toggle2 Script 2
-        <script>
-            $("#menu-toggle2").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-        </script>-->
     </body>
 </html>

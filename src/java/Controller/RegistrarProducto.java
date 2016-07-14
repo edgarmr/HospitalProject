@@ -17,7 +17,6 @@ public class RegistrarProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession sesion = request.getSession(true);
         int usrAlta = new Integer(sesion.getAttribute("idSesion").toString());
-        
         Calendar fecha = new GregorianCalendar();
         String date = fecha.get(Calendar.YEAR) + "-" + fecha.get(Calendar.MONTH) + "-" + fecha.get(Calendar.DAY_OF_MONTH);
         Producto product = new Producto();
@@ -34,7 +33,7 @@ public class RegistrarProducto extends HttpServlet {
         product.setFechMod(date);
         ProductQueries insert = new ProductQueries();
         insert.insertProduct(product);
-        response.sendRedirect("AltaProductos.jsp");
+        response.sendRedirect("Menu.jsp");
     }
 
     @Override

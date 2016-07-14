@@ -13,7 +13,7 @@ public class Logout extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession sesion = request.getSession(true);
+            HttpSession sesion = request.getSession();
             sesion.invalidate();
             response.sendRedirect("index.html");
         }
