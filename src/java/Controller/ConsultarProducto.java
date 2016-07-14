@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Clasess.Producto;
+import Model.Classes.Producto;
 import Model.ProductQueries;
 import java.io.IOException;
 import java.io.PrintWriter;
