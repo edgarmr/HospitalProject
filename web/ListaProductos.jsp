@@ -26,50 +26,7 @@
         <link href="css/sweetalert.css" rel="stylesheet">
         <script src="js/sweetalert.min.js"> </script>
         <script src="js/jquery-2.2.2.min.js"></script>
-        <script>
-            $(document).ready(function () {
-            (function ($) {
-                $("#searchProduct").on('keyup', function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $("tr").hide();
-                    $("tr").filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                });
-            }(jQuery));
-            });
-            
-            function updateRow(id) {
-                $("#mnombre").val($("#nombre" + id).html());
-                $("#mdescrip").val($("#descrip" + id).html());
-                $("#mcosto").val($("#costo" + id).html());
-                $("#mprecio").val($("#precio" + id).html());
-                $("#mprove").val($("#prove" + id).html());
-                $("#mexist").val(parseInt($("#exist" + id).html()));
-                $("#mtipo").val($("#tipo" + id).html());
-                $("#munidad").val($("#unidad" + id).html());
-                $("#mid").val(id);
-            }
-
-            function deleteRow(id) {
-                swal({
-                    title: "¿Seguro de eliminar el registro?",
-                    text: "No podras recuperar este registro posteriormente",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "¡Sí borrar!",
-                    closeOnConfirm: false
-                },
-                function(){
-                    $.post('BorrarProducto', {id: id}, function (response) {
-                        $("#" + id).hide();
-                    });
-                    swal("Registro eliminado","","success");
-                }
-                );
-            }
-        </script>
+        <script type="text/javascript" src="js/productos.js"> </script>
         <style type="text/css">
             div.modal-header,div.modal-footer{
                 background-color: #E74C3C;
@@ -257,7 +214,7 @@
                                     for (int i = 0; i < listPro.length; i++) {
                                         id = listPro[i].getProducto_id();
                             %>
-                            <tr id="<%=id%>">
+                            <tr id="tr<%=id%>">
                                 <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
                                 <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
                                 <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
@@ -267,10 +224,10 @@
                                 <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
                                 <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
                                 <td>
-                                    <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
+                                    <button id="<%=id%>" class='btn btn-warning btn-xs update' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
                                         <span class='glyphicon glyphicon-refresh'></span>
                                     </button>
-                                    <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=id%>')">
+                                    <button id="<%=id%>" class='btn btn-danger btn-xs delete' type='button'>
                                         <span class='glyphicon glyphicon-trash'></span>
                                     </button>
                                 </td>
