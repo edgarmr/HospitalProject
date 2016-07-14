@@ -10,9 +10,23 @@
         <title>Menú - Hospital México</title>
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/simple-sidebar.css" rel="stylesheet">
+        <script src="js/jquery-2.2.2.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script>
+            $(function () {
+                $('.datepicker').datepicker();
+            });
+        </script>
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
     </head>
     <body>
-        <!-- <div id="wrapper">-->
         <div id="page-content-wrapper">
             <br>
             <div class="container-fluid">
@@ -34,28 +48,26 @@
                             </div>
                         </div>
 
-                            <div class="row">                                                                                               
-                                <div class="form-group col-md-6 col-lg-6">
-                                    <label >Proveedor</label>
-                                    <input type="text" class="form-control" name="provedorp" placeholder="Nombre provedor(es)">
-                                </div>
-                                <div class="form-group col-md-6 col-lg-6">
-                                    <label >Costo</label>
-                                    <input type="number" step="any" class="form-control" name="costop" placeholder="Introduce Costo del Producto">
-                                </div>                       
+                        <div class="row">                                                                                               
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label >Proveedor</label>
+                                <input type="text" class="form-control" name="provedorp" placeholder="Nombre provedor(es)">
                             </div>
-
-                            <div class="row">                                                                                               
-                                <div class="form-group col-md-6 col-lg-6">
-                                    <label >Precio </label>
-                                    <input type="number" step="any" class="form-control" name="preciop" placeholder="Introduce el Precio">
-                                </div>
-                                <div class="form-group col-md-6 col-lg-6">
-                                    <label >Existencia </label>
-                                    <input type="text" class="form-control" name="existenciap" placeholder="Existencia del Producto" required>
-                                </div>                       
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label >Costo</label>
+                                <input type="number" step="any" class="form-control" name="costop" placeholder="Introduce Costo del Producto">
+                            </div>                       
+                        </div>
+                        <div class="row">                                                                                               
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label >Precio </label>
+                                <input type="number" step="any" class="form-control" name="preciop" placeholder="Introduce el Precio">
                             </div>
-
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label >Existencia </label>
+                                <input type="text" class="form-control" name="existenciap" placeholder="Existencia del Producto" required>
+                            </div>                       
+                        </div>
                         <div class="row">                                                                                   
                             <div class="form-group col-md-6 col-lg-6">
                                 <label >Tipo </label>
@@ -82,21 +94,5 @@
                 </form>
             </div>
         </div>
-        <!--</div>-->
-        <script src="js/jquery-2.2.2.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <script>
-            $(function () {
-                $('.datepicker').datepicker();
-            });
-        </script>
-        <script>
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-        </script>
     </body>
 </html>
