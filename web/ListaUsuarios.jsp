@@ -1,10 +1,10 @@
 <%-- 
-    Document   : ListaProductos
-    Created on : 10/07/2016, 06:40:17 PM
-    Author     : Edgar
+    Document   : ListaUsuarios
+    Created on : Jul 13, 2016, 8:20:23 PM
+    Author     : Daniel
 --%>
 
-<%@page import="Model.Classes.Producto"%>
+<%@page import="Model.Classes.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Producto[] listPro = (Producto[]) request.getAttribute("listaPro"); %>
 <!DOCTYPE html>
@@ -21,7 +21,50 @@
         <link href="css/sweetalert.css" rel="stylesheet">
         <script src="js/sweetalert.min.js"></script>
         <script src="js/jquery-2.2.2.min.js"></script>
-        <script type="text/javascript" src="js/productos.js"> </script>
+        <script>
+            $(document).ready(function () {
+                (function ($) {
+                    $("#searchProduct").on('keyup', function () {
+                        var rex = new RegExp($(this).val(), 'i');
+                        $("tr").hide();
+                        $("tr").filter(function () {
+                            return rex.test($(this).text());
+                        }).show();
+                    });
+                }(jQuery));
+            });
+
+            function updateRow(id) {
+                $("#mnombre").val($("#nombre" + id).html());
+                $("#mdescrip").val($("#descrip" + id).html());
+                $("#mcosto").val($("#costo" + id).html());
+                $("#mprecio").val($("#precio" + id).html());
+                $("#mprove").val($("#prove" + id).html());
+                $("#mexist").val(parseInt($("#exist" + id).html()));
+                $("#mtipo").val($("#tipo" + id).html());
+                $("#munidad").val($("#unidad" + id).html());
+                $("#mid").val(id);
+            }
+
+            function deleteRow(id) {
+                swal({
+                    title: "¿Seguro de eliminar el registro?",
+                    text: "No podras recuperar este registro posteriormente",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "¡Sí borrar!",
+                    closeOnConfirm: false
+                },
+                        function () {
+                            $.post('BorrarProducto', {id: id}, function (response) {
+                                $("#" + id).hide();
+                            });
+                            swal("Registro eliminado", "", "success");
+                        }
+                );
+            }
+        </script>
         <style type="text/css">
             div.modal-header,div.modal-footer{
                 background-color: #E74C3C;
@@ -94,50 +137,6 @@
                     <input type="text" class="form-control" id="searchProduct" placeholder="Búsqueda de productos (por nombre, descripción etc...)">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
                 </div>
-<<<<<<< HEAD
-
-                <div class="table-responsive">
-                    <table class="table table-hover" style="margin-top: 20px;">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Costo</th>
-                                <th>Precio</th>
-                                <th>Proveedor</th>
-                                <th>Existencia</th>
-                                <th>Tipo</th>
-                                <th>Unidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                int id=0;
-                                if (listPro != null) {
-                                    for (int i = 0; i < listPro.length; i++) {
-                                        id = listPro[i].getProducto_id();
-                            %>
-                            <tr id="tr<%=id%>">
-                                <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
-                                <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
-                                <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
-                                <td id="precio<%=id%>"> <%= listPro[i].getPrecio()%> </td>
-                                <td id="prove<%=id%>"> <%= listPro[i].getProveedor()%> </td>
-                                <td id="exist<%=id%>"> <%= listPro[i].getExistencia()%> </td>
-                                <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
-                                <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
-                                <td>
-                                    <button id="<%=id%>" class='btn btn-warning btn-xs update' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
-                                        <span class='glyphicon glyphicon-refresh'></span>
-                                    </button>
-                                    <button id="<%=id%>" class='btn btn-danger btn-xs delete' type='button'>
-                                        <span class='glyphicon glyphicon-trash'></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <%
-                                    }
-=======
             </div>
             <div class="table-responsive">
                 <table class="table table-hover" style="margin-top: 20px;">
@@ -179,7 +178,6 @@
                             </td>
                         </tr>
                         <%
->>>>>>> c9d5949b9e783a28263fafa02d27896a15881e24
                                 }
                             }
                         %>
