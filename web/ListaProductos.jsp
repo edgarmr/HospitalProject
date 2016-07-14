@@ -94,7 +94,6 @@
                     <input type="text" class="form-control" id="searchProduct" placeholder="Búsqueda de productos (por nombre, descripción etc...)">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
                 </div>
-<<<<<<< HEAD
 
                 <div class="table-responsive">
                     <table class="table table-hover" style="margin-top: 20px;">
@@ -135,51 +134,8 @@
                                     </button>
                                 </td>
                             </tr>
-                            <%
-                                    }
-=======
-            </div>
-            <div class="table-responsive">
-                <table class="table table-hover" style="margin-top: 20px;">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Costo</th>
-                            <th>Precio</th>
-                            <th>Proveedor</th>
-                            <th>Existencia</th>
-                            <th>Tipo</th>
-                            <th>Unidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         <%
-                            int id = 0;
-                            if (listPro != null) {
-                                for (int i = 0; i < listPro.length; i++) {
-                                    id = listPro[i].getProducto_id();
-                        %>
-                        <tr id="<%=id%>">
-                            <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
-                            <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
-                            <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
-                            <td id="precio<%=id%>"> <%= listPro[i].getPrecio()%> </td>
-                            <td id="prove<%=id%>"> <%= listPro[i].getProveedor()%> </td>
-                            <td id="exist<%=id%>"> <%= listPro[i].getExistencia()%> </td>
-                            <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
-                            <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
-                            <td>
-                                <button id="update" class='btn btn-warning btn-xs' type='button' data-toggle="modal" data-target="#myModal" onclick="updateRow('<%=id%>')">
-                                    <span class='glyphicon glyphicon-refresh'></span>
-                                </button>
-                                <button class='btn btn-danger btn-xs' type='button' onclick="deleteRow('<%=id%>')">
-                                    <span class='glyphicon glyphicon-trash'></span>
-                                </button>
-                            </td>
-                        </tr>
-                        <%
->>>>>>> c9d5949b9e783a28263fafa02d27896a15881e24
+
                                 }
                             }
                         %>
@@ -191,9 +147,9 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script>
-                                    $(function () {
-                                        $('.datepicker').datepicker();
-                                    });
+            $(function () {
+                $('.datepicker').datepicker();
+            });
         </script>
         <script>
             $("#menu-toggle").click(function (e) {
