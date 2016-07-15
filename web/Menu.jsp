@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-lg-12">                        
                             <a href="#menu-toggle" id="menu-toggle">
-                                <button type="button"><img src="img/izquierda.jpg"></button>
+                                <input type="image" src="img/izquierda.jpg">
                             </a>
                             <h1>Bienvenido <%=rol%></h1>
                             <p>Ahora que te has logueado correctamente a nuestro sistema, podrás ver y
