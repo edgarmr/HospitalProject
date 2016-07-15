@@ -55,7 +55,7 @@ public class UserQueries {
                 listUsr = new Usuario[rs.getInt(1)];
                 System.out.println("Número de filas " + rs.getInt(1));
             }
-            sqlSelect = "SELECT * FROM usuarios WHERE usrStatus='Activo'";
+            sqlSelect = "SELECT usuario_id,nombre,apPaterno,apMaterno,usrLogin,usrPassword FROM usuarios WHERE usrStatus='Activo'";
             pstmt = conn.prepareStatement(sqlSelect);
             rs = pstmt.executeQuery();
             int i = 0;
