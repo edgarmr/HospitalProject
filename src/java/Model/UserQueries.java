@@ -55,7 +55,7 @@ public class UserQueries {
                 listUsr = new Usuario[rs.getInt(1)];
                 System.out.println("Número de filas " + rs.getInt(1));
             }
-            sqlSelect = "SELECT usuario_id,nombre,apPaterno,apMaterno,usrLogin,usrPassword FROM usuarios WHERE usrStatus='Activo'";
+            sqlSelect = "SELECT usuario_id,nombre,apPaterno,apMaterno,usrLogin,usrPassword,usrRol FROM usuarios WHERE usrStatus='Activo'";
             pstmt = conn.prepareStatement(sqlSelect);
             rs = pstmt.executeQuery();
             int i = 0;
@@ -80,11 +80,11 @@ public class UserQueries {
         sqlUpdate = "UPDATE usuarios\n"
                 + "                     SET nombre = '" + u.getName()+ "',\n"
                 + "                     apPaterno = '" + u.getApeP()+ "',\n"
-                + "                     apMaterno = " + u.getApeM()+ ",\n"
-                + "                     usrLogin = " + u.getLogin()+ ",\n"
-                + "                     usrPassword = '" + u.getPass() + "',\n"
-                + "                     usrRol = " + u.getRol() + ",\n"
-                + "                     usrStatus = '" + u.getStatus() + "',\n"
+                + "                     apMaterno = '" + u.getApeM()+ "',\n"
+                + "                     usrLogin = '" + u.getLogin()+ "',\n"
+                //+ "                     usrPassword = '" + u.getPass() + "',\n"
+                + "                     usrRol = '" + u.getRol() + "',\n"
+                //+ "                     usrStatus = '" + u.getStatus() + "',\n"
                 + "                     usrUsrMod = " + u.getUsrM() + ",\n"
                 + "                     usrFechMod = '" + u.getFechaM() + "'\n"
                 + "                     WHERE usuario_id = " + u.getId();

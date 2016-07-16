@@ -1,28 +1,20 @@
 package Controller;
 
-import Model.Classes.Producto;
-import Model.ProductQueries;
+import Model.UserQueries;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class ConsultarProducto extends HttpServlet {
-
+public class BorrarUsuario extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ProductQueries query = new ProductQueries();
-            Producto []producto =  query.getProductos();
-            
-            request.setAttribute("listaPro",producto);
-            RequestDispatcher view = request.getRequestDispatcher("ListaProductos.jsp");
-            view.forward(request, response);
+            UserQueries query = new UserQueries();
+            query.deleteUser(new Integer(request.getParameter("id")));
         }
     }
 

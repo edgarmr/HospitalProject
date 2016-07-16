@@ -17,7 +17,7 @@ $(document).ready(function () {
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "¡Sí borrar!",
+            confirmButtonText: "¡Sí, borrar!",
             closeOnConfirm: false
         },
         function(){

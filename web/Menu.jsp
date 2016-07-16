@@ -14,11 +14,6 @@
         <title>Menú - Hospital México</title>
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/simple-sidebar.css" rel="stylesheet">
-        <script>
-            function myFunction(page){
-                $("#page-content-wrapper").load(page);
-            }
-        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -37,8 +32,8 @@
                             Personal <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a onclick="myFunction('AltaUsuarios.jsp')"> <span class="glyphicon glyphicon-plus" aria-hidden="true">Altas</span></a></li>
-                            <li><a onclick="myFunction('ConsultarUsuario')"> <span class="glyphicon glyphicon-pencil" aria-hidden="true">Consultas</span> </a></li>                             
+                            <li><a href="AltaUsuarios.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true">Altas</span></a></li>
+                            <li><a href="ConsultarUsuario"> <span class="glyphicon glyphicon-pencil" aria-hidden="true">Consultas</span> </a></li>                             
                         </ul>
                     </li>
                     <%}%>
@@ -48,8 +43,8 @@
                             Productos <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a onclick="myFunction('AltaProductos.jsp')"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
-                            <li><a onclick="myFunction('ConsultarProducto')"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
+                            <li><a href="AltaProductos.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span></a></li>
+                            <li><a href="ConsultarProducto"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -58,7 +53,7 @@
                             Pacientes <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                            <li><a href="AltaPacientes.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
                             <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
