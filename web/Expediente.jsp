@@ -6,6 +6,7 @@
 
 <%@page import="Model.Classes.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Paciente paciente = (Paciente) request.getAttribute("paciente"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +26,8 @@
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/sweetalert.css" rel="stylesheet">
+    <script src="js/sweetalert.min.js"></script>
 
 </head>
 
@@ -40,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" cl><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
+                    <a href="Menu.jsp" cl><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
                 </li>
                 <li class="dropdown">
                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -80,7 +83,7 @@
                         Cotizaciones <span class="caret"></span>
                    </a>
                     <ul class="dropdown-menu">
-                             <li><a href="altascotizaciones.php"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                             <li><a href="#"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
                              <li><a href="#"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
                     </ul>
                 </li>
@@ -128,34 +131,35 @@
             <div class="container-fluid">
                
                <input type="image" id="hacky-input" src="img/izquierda.jpg">             
-              
+               
               <br><br>
-              
-              <form role="form" action="" method="post">
+              <% if(paciente != null){ %>
+              <h1 class="text-center text-info">¡Expediente de <%= paciente.getNombre()+" "+paciente.getApPaterno() %>!</h1>
+              <form role="form" action="ActualizarPaciente" method="post">
               
                <fieldset>
-               <legend> Alta de Pacientes</legend>
+               <legend> Datos personales</legend>
                               
                
                <div class="row">                                                                                               
                    <div class="form-group col-md-6 col-lg-6">
                     <label >Nombre </label>
-                    <input type="text" class="form-control" name="nombre"  placeholder="Introduce tu Nombre">
+                        <input type="text" class="form-control" name="nombre" value="<%=paciente.getNombre()%>" placeholder="Introduce tu Nombre" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                     <label >Apellido Paterno</label>
-                        <input type="text" class="form-control" name="apellidop"  placeholder="Introduce tu Apellido Paterno">
+                        <input type="text" class="form-control" name="apellidop" value="<%=paciente.getApPaterno()%>" placeholder="Introduce tu Apellido Paterno" readonly>
                    </div>                       
                 </div>
                 
                 <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label >Apellido Materno</label>
-                        <input type="text" class="form-control" name="apellidom"  placeholder="Introduce tu Apellido Materno">
+                        <input type="text" class="form-control" name="apellidom" value="<%=paciente.getApMaterno()%>" placeholder="Introduce tu Apellido Materno" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                                 <label >Fecha de Nacimiento </label>
-                                <input type="text" class="form-control datepicker" name="fechaNac" placeholder="Elige la fecha en que naciste">
+                                <input type="text" class="form-control datepicker" name="fechaNac" value="<%=paciente.getFechNac()%>" placeholder="Elige la fecha en que naciste" readonly>
                           </div>                       
                 </div>
                 
@@ -163,8 +167,7 @@
                           
                           <div class="form-group col-md-6 col-lg-6">
                                 <label >Telefono</label>
-                        <input type="text" class="form-control" name="telefono"
-                                   placeholder="Introduce tu numero de telefono">
+                        <input type="text" class="form-control" name="telefono" value="<%=paciente.getTelefono()%>" placeholder="Introduce tu numero de telefono" readonly>
                           </div>                     
                 </div>
             
@@ -173,13 +176,11 @@
                           
                           <div class="form-group col-md-6 col-lg-6">
                                 <label >Direccion </label>
-                                <input type="text" class="form-control" name="direccion"
-                                   placeholder="Calle / Numero / Colonia">
+                                <input type="text" class="form-control" name="direccion" value="<%=paciente.getDireccion()%>" placeholder="Calle / Numero / Colonia" readonly>
                           </div>                
                           <div class="form-group col-md-6 col-lg-6">
                             <label >Correo</label>
-                                <input type="text" class="form-control" name="correo"
-                                           placeholder="Introduce Correo Electronico">
+                                <input type="text" class="form-control" name="correo" value="<%=paciente.getCorreo()%>" placeholder="Introduce Correo Electronico" readonly>
                            </div>   
                 </div>
                 
@@ -187,12 +188,14 @@
             <div class="row">
                           <div class="form-group col-md-6 col-lg-6">
                                 <label>Estado </label>
-                                <select  id="jmr_contacto_estado" class="form-control" name="estado"> 
+                                <select  id="jmr_contacto_estado" class="form-control" name="estado" readonly>
+                                    <option> <%=paciente.getEstado()%> </option>
                                 </select>
                           </div>                                                                                   
                           <div class="form-group col-md-6 col-lg-6">
                                 <label>Municipio </label>
-                                <select  id="jmr_contacto_municipio" class="form-control" name="municipio"> 
+                                <select  id="jmr_contacto_municipio" class="form-control" name="municipio" readonly>
+                                    <option><%=paciente.getMunicipio()%></option>
                                 </select>
                           </div>                       
                 </div>                                                                
@@ -202,19 +205,13 @@
             <legend>Antecedentes Hereditarios </legend>
                              
             <div class="row">                                                                                               
-                    <div class="form-group col-md-6 col-lg-6">
+                    <div class="form-group col-md-6 col-lg-6" class="form-control">
                         <label>Diabetes</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="diabetes" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="diabetes" value="no">No</label>
+                        <input type="text" name="diabetes" value="<%= paciente.getDiabetes() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>HAS</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="has" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="has" value="no">No</label>
+                        <input type="text" name="has" value="<%= paciente.getHas() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>
@@ -222,17 +219,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Cancer</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="cancer" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="cancer" value="no">No</label>
+                        <input type="text" name="cancer" value="<%= paciente.getCancer() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Cardiopat&iacute;as</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="cardiopatia" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="cardiopatia" value="no">No</label>
+                        <input type="text" name="cardiopatia" value="<%= paciente.getCardiopatias() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>
@@ -240,17 +231,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Enfermedades Renales</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="enf_renales" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="enf_renales" value="no">No</label>
+                        <input type="text" name="enf_renales" value="<%= paciente.getRenales() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Tiroides</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="tiroides" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="tiroides" value="no">No</label>
+                        <input type="text" name="tiroides" value="<%= paciente.getTiroides() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>
@@ -258,17 +243,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Enfermedades Autoinmunes</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="enf_autoinmunes" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="enf_autoinmunes" value="no">No</label>
+                        <input type="text" name="enf_autoinmunes" value="<%= paciente.getAutoinmunes() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Embolias</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="embolias" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="embolias" value="no">No</label>
+                        <input type="text" name="embolias" value="<%= paciente.getEmbolias() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>
@@ -276,14 +255,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Musculo-Esqueleticas</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="musculoesqueleticas" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="musculoesqueleticas" value="no">No</label>
+                        <input type="text" name="musculoesqueleticas" value="<%= paciente.getMuscEsq() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Otras</label><br>
-                        <input type="text" name="otras" class="form-control">
+                        <input type="text" name="otras" class="form-control" value="<%= paciente.getOtros() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>                                                          
@@ -296,17 +272,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Cirug&iacute;as</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="cirugias" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="cirugias" value="no">No</label>
+                        <input type="text" name="cirugias" value="<%= paciente.getCirujias() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Fracturas</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="fracturas" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="fracturas" value="no">No</label>
+                        <input type="text" name="fracturas" value="<%= paciente.getFract() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>
@@ -314,14 +284,8 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Transfusiones</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="transfusiones" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="transfusiones" value="no">No</label>
-                   </div>
-                   <div class="form-group col-md-6 col-lg-6">
-                   </div>
-                                   
+                        <input type="text" name="transfusiones" value="<%= paciente.getTransfu() %>" placeholder="Si/No" class="form-control" readonly>
+                   </div>           
             </div>            
     </fieldset>
     <br><br>
@@ -331,17 +295,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Tabaquismo</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="tabaquismo" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="tabaquismo" value="no">No</label>
+                        <input type="text" name="tabaquismo" value="<%= paciente.getTabaqu() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
-                        <label>Alergias / Uso de Anticoagulantes</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="alergias" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="alergias" value="no">No</label>
+                        <label>Alergias</label><br>
+                        <input type="text" name="alergias" value="<%= paciente.getAlergias() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>
@@ -349,17 +307,11 @@
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
                         <label>Toxicoman&iacute;as</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="toxicomanias" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="toxicomanias" value="no">No</label>
+                        <input type="text" name="toxicomanias" value="<%= paciente.getTaxicom() %>" placeholder="Si/No" class="form-control" readonly> 
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                    <label>Alcoholismo</label><br>
-                        <label class="radio-inline">
-                        <input type="radio" name="alcoholismo" value="si">Si</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="alcoholismo" value="no">No</label>
+                        <input type="text" name="alcoholismo" value="<%= paciente.getAlcohol() %>" placeholder="Si/No" class="form-control" readonly>
                    </div>
                                    
             </div>             
@@ -372,7 +324,7 @@
                <div class="row">                   
                    <div class="form-group col-md-6 col-lg-6">
                    <label>A&ntilde;o DX</label><br>
-                        <select class="form-control" name="aniodx">
+                        <select class="form-control" name="aniodx" readonly>
                                     <option value="1">1940</option>
                                     <option value="2">1941</option>
                                     <option value="3">1942</option>
@@ -381,30 +333,37 @@
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                        <label>Enfermedad</label><br>
-                        <input type="text" name="enf_cro" class="form-control">
+                        <input type="text" name="enf_cro" class="form-control" value="<%= paciente.getNombreEnfCro() %>" readonly>
                    </div>                       
                 </div>
                 
             <div class="row">                                                                                               
                     <div class="form-group col-md-6 col-lg-6">
-                    <label>Tratamiento Actual</label><br>
-                        <input type="text" name="tratamiento" class="form-control">
-                   </div>
-                   <div class="form-group col-md-6 col-lg-6">                        
-                   </div>
-                                   
+                    <label>Tratamiento Actual</label><br> 
+                    <input type="text" name="tratamiento" class="form-control" value="<%=paciente.getTratamiento()%>" readonly>
+                   </div>                      
             </div>
                                                           
                <div class="row" >
-                         <div class="form-group col-lg-6">
-                             <button name="enviar" type="submit" class="btn btn-success">Enviar</button>
-                             <button type="reset" class="btn btn-primary">Limpiar</button>
-                         </div>                        
+                    <div class="form-group col-lg-6">
+                        <button id="enable" type="button" class="btn btn-info">
+                            <span style="font-size: 2em;" class="glyphicon glyphicon-edit"> </span>
+                        </button>
+                        <button id="update" type="submit" class="btn btn-success">
+                            <span style="font-size: 2em;" class="glyphicon glyphicon-floppy-save"> </span>
+                        </button>
+                        <button id="delete" type="button" class="btn btn-danger">
+                            <span style="font-size: 2em;" class="glyphicon glyphicon-trash"> </span>
+                        </button>
+                        <input id="key" name="id" type="hidden" value="<%= paciente.getPaciente_id() %>">
+                    </div>
+                   
                </div>          
                
     </fieldset>
     <br><br><br>
     </form>
+    <% } %>
     </div> <!-- Div class container-fluid -->
             
         </div>
@@ -419,6 +378,37 @@
     <script src="js/bootstrap.min.js"></script>
     
     <!-- Bootstrap Core JavaScript -->
+    
+    <script> 
+        $(document).ready(function(){
+            
+            $("#enable").on('click',function(){
+                $("input[type='text'], select").attr('readonly',false);
+            });
+            
+            $("#delete").on('click',function(){
+                swal({
+                    title: "¿Seguro de eliminar el registro?",
+                    text: "No podras recuperar este registro posteriormente",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "¡Sí, borrar!",
+                    closeOnConfirm: false
+                },
+                    function(){
+                        $.post('BorrarPaciente', {id: $("#key").val()},function(data,status){
+                            if(status==="success"){
+                                window.location = "ConsultarPaciente";
+                            }
+                            
+                        });
+                        swal("Registro eliminado","","success");
+                });
+               
+            });
+        });
+    </script>
 
     <script src="js/bootstrap-datepicker.js"></script>
     

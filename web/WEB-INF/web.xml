@@ -32,6 +32,26 @@
         <servlet-name>ConsultarUsuario</servlet-name>
         <servlet-class>Controller.ConsultarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistrarPaciente</servlet-name>
+        <servlet-class>Controller.RegistrarPaciente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarPaciente</servlet-name>
+        <servlet-class>Controller.ConsultarPaciente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarExpediente</servlet-name>
+        <servlet-class>Controller.ConsultarExpediente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarPaciente</servlet-name>
+        <servlet-class>Controller.BorrarPaciente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarPaciente</servlet-name>
+        <servlet-class>Controller.ActualizarPaciente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -63,6 +83,26 @@
     <servlet-mapping>
         <servlet-name>ConsultarUsuario</servlet-name>
         <url-pattern>/ConsultarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarPaciente</servlet-name>
+        <url-pattern>/RegistrarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarPaciente</servlet-name>
+        <url-pattern>/ConsultarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarExpediente</servlet-name>
+        <url-pattern>/ConsultarExpediente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarPaciente</servlet-name>
+        <url-pattern>/BorrarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarPaciente</servlet-name>
+        <url-pattern>/ActualizarPaciente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

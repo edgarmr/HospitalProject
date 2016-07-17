@@ -1,6 +1,6 @@
 package Model.Classes;
 
-public class Paciente {
+public class Paciente extends EnfermedadCronica {
    private int paciente_id;
    private String nombre, apPaterno, apMaterno;
    private String fechNac,telefono,direccion;
