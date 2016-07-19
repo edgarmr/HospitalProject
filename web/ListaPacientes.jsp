@@ -84,20 +84,8 @@
                             Cotizaciones <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-time"  aria-hidden="true"></span>  
-                            Antecedentes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Hereditarios </span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Patológicos</span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">No&nbsp;Patológicos</span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Crónicas</span> </a></li>                             
+                            <li><a href="AltaCotizaciones.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                            <li><a href="ConsultarVenta"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
                     <li>
@@ -158,7 +146,7 @@
             </div>
             <div id="page-content-wrapper">
                 <a href="#menu-toggle" id="menu-toggle">
-                    <button type="button" class="btn btn-danger">Abrir/Cerrar Menú</button>
+                    <input type="image" src="img/flecha.png">
                 </a>
                 <h1 id="titulo" class="text-center"> Lista de Pacientes </h1>
                 <div class="form-group">
@@ -176,7 +164,6 @@
                                     <th>Apellido Paterno</th>
                                     <th>Apellido Materno</th>
                                     <th>Fecha de Alta</th>
-                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -192,14 +179,6 @@
                                     <td> <%= listPac[i].getApPaterno() %> </td>
                                     <td> <%= listPac[i].getApMaterno() %> </td>
                                     <td> <%= listPac[i].getFechAlta() %> </td>
-                                    <td>
-                                        <button id="<%=id%>" class='btn btn-warning btn-sm update' type='button' data-toggle="modal" data-target="#myModal">
-                                            <span class='glyphicon glyphicon-refresh'></span>
-                                        </button>
-                                        <button id="<%=id%>" class='btn btn-danger btn-sm delete' type='button'>
-                                            <span class='glyphicon glyphicon-trash'></span>
-                                        </button>
-                                    </td>
                                 </tr>
                                 <%
 

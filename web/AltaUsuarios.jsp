@@ -73,8 +73,8 @@
                             Pacientes <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
+                            <li><a href="AltaPacientes.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                            <li><a href="ConsultarPaciente"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -83,20 +83,8 @@
                             Cotizaciones <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <span class="glyphicon glyphicon-time"  aria-hidden="true"></span>  
-                            Antecedentes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Hereditarios </span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Patológicos</span> </a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">No&nbsp;Patológicos</span></a></li>
-                            <li><a href=""> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Crónicas</span> </a></li>                             
+                            <li><a href="AltaCotizaciones.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                            <li><a href="ConsultarVenta"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
                     <li>
@@ -107,7 +95,7 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <a href="#menu-toggle" id="menu-toggle">
-                        <button type="button" class="btn btn-danger">Abrir/Cerrar Menu</button>
+                     <input type="image" src="img/flecha.png">
                     </a>
                     <br><br>
                     <fieldset>

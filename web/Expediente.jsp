@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="Model.Classes.Paciente"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <% Paciente paciente = (Paciente) request.getAttribute("paciente"); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,26 +83,13 @@
                         Cotizaciones <span class="caret"></span>
                    </a>
                     <ul class="dropdown-menu">
-                             <li><a href="#"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                             <li><a href="#"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
-                    </ul>
-                </li>
-                
-                <li class="dropdown">
-                   <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        <span class="glyphicon glyphicon-time"  aria-hidden="true"></span>  
-                        Antecedentes <span class="caret"></span>
-                   </a>
-                    <ul class="dropdown-menu">
-                             <li><a href="hereditarios.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">    Hereditarios </span></a></li>
-                             <li><a href="patologicos.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">    Patol&oacute;gicos</span> </a></li>
-                             <li><a href="nopatologicos.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> No Patol&oacute;gicos</span> </a></li>
-                             <li><a href="cronicas.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> Cr&oacute;nicas</span> </a></li>                             
+                             <li><a href="AltaCotizaciones.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                             <li><a href="ConsultarVenta"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
                     </ul>
                 </li>
                 
                 <li>
-                    <a href="index.php" cl><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>  Cerrar Sesi&oacute;n </a>
+                    <a href="Logout" cl><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>  Cerrar Sesi&oacute;n </a>
                 </li>
                 
                 <!-- Boton Cerrar Menu -->
@@ -130,11 +117,13 @@
            <br>
             <div class="container-fluid">
                
-               <input type="image" id="hacky-input" src="img/izquierda.jpg">             
+               <a href="#menu-toggle" id="menu-toggle">
+                    <input type="image" src="img/flecha.png">
+                </a>             
                
               <br><br>
               <% if(paciente != null){ %>
-              <h1 class="text-center text-info">Â¡Expediente de <%= paciente.getNombre()+" "+paciente.getApPaterno() %>!</h1>
+              <h1 class="text-center text-info">¡Expediente de <%= paciente.getNombre()+" "+paciente.getApPaterno() %>!</h1>
               <form role="form" action="ActualizarPaciente" method="post">
               
                <fieldset>
@@ -190,12 +179,90 @@
                                 <label>Estado </label>
                                 <select  id="jmr_contacto_estado" class="form-control" name="estado" readonly>
                                     <option> <%=paciente.getEstado()%> </option>
+                                    <option >Aguascalientes</option>
+                                    <option >Baja California</option>
+                                    <option >Baja California Sur</option>
+                                    <option >Campeche</option>
+                                    <option >Coahuila de Zaragoza</option>
+                                    <option >Colima</option>
+                                    <option >Chiapas</option>
+                                    <option >Chihuahua</option>
+                                    <option >Distrito Federal</option>
+                                    <option >Durango</option>
+                                    <option >Guanajuato</option>
+                                    <option >Guerrero</option>
+                                    <option >Hidalgo</option>
+                                    <option >Jalisco</option>
+                                    <option >México</option>
+                                    <option >Michoacán de Ocampo</option>
+                                    <option >Morelos</option>
+                                    <option >Nayarit</option>
+                                    <option >Nuevo León</option>
+                                    <option >Oaxaca</option>
+                                    <option >Puebla</option>
+                                    <option >Querétaro</option>
+                                    <option >Quintana Roo</option>
+                                    <option >San Luis Potosí</option>
+                                    <option >Sinaloa</option>
+                                    <option >Sonora</option>
+                                    <option >Tabasco</option>
+                                    <option >Tamaulipas</option>
+                                    <option >Tlaxcala</option>
+                                    <option >Veracruz de Ignacio de la Llave</option>
+                                    <option >Yucatán</option>
+                                    <option >Zacatecas</option>
                                 </select>
                           </div>                                                                                   
                           <div class="form-group col-md-6 col-lg-6">
                                 <label>Municipio </label>
                                 <select  id="jmr_contacto_municipio" class="form-control" name="municipio" readonly>
                                     <option><%=paciente.getMunicipio()%></option>
+                                    <option >Abasolo</option>
+                                    <option >Acambaro</option>
+                                    <option >San Miguel de Allende</option>
+                                    <option >Apaseo el Alto</option>
+                                    <option >Apaseo el Grande</option>
+                                    <option >Atarjea</option>
+                                    <option >Celaya</option>
+                                    <option >Manuel Doblado</option>
+                                    <option >Comonfort</option>
+                                    <option >Coroneo</option>
+                                    <option >Cortazar</option>
+                                    <option >Cueramaro</option>
+                                    <option >Doctor Mora</option>
+                                    <option >Dolores Hidalgo Cuna de la Independencia Nacional</option>
+                                    <option >Guanajuato</option>
+                                    <option >Huanimaro</option>
+                                    <option >Irapuato</option>
+                                    <option >Jaral del Progreso</option>
+                                    <option >Jerecuaro</option>
+                                    <option >Leon</option>
+                                    <option >Moroleon</option>
+                                    <option >Ocampo</option>
+                                    <option >Penjamo</option>
+                                    <option >Pueblo Nuevo</option>
+                                    <option >Purisima del Rincon</option>
+                                    <option >Romita</option>
+                                    <option >Salamanca</option>
+                                    <option >Salvatierra</option>
+                                    <option >San Diego de la Union</option>
+                                    <option >San Felipe</option>
+                                    <option >San Francisco del Rincon</option>
+                                    <option >San Jose Iturbide</option>
+                                    <option >San Luis de la Paz</option>
+                                    <option >Santa Catarina</option>
+                                    <option >Santa Cruz de Juventino Rosas</option>
+                                    <option >Santiago Maravatio</option>
+                                    <option >Silao</option>
+                                    <option >Tarandacuao</option>
+                                    <option >Tarimoro</option>
+                                    <option >Tierra Blanca</option>
+                                    <option >Uriangato</option>
+                                    <option >Valle de Santiago</option>
+                                    <option >Victoria</option>
+                                    <option >Villagran</option>
+                                    <option >Xichu</option>
+                                    <option >Yuriria</option>
                                 </select>
                           </div>                       
                 </div>                                                                
@@ -388,12 +455,12 @@
             
             $("#delete").on('click',function(){
                 swal({
-                    title: "Â¿Seguro de eliminar el registro?",
+                    title: "¿Seguro de eliminar el registro?",
                     text: "No podras recuperar este registro posteriormente",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Â¡SÃ­, borrar!",
+                    confirmButtonText: "¡Sí, borrar!",
                     closeOnConfirm: false
                 },
                     function(){

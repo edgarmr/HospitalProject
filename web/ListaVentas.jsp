@@ -3,10 +3,10 @@
     Created on : 10/07/2016, 06:40:17 PM
     Author     : Edgar
 --%>
-<%@page import="Model.Classes.Producto"%>
+<%@page import="Model.Classes.Venta" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    Producto[] listPro = (Producto[]) request.getAttribute("listaPro");
+    Venta[] listVenta = (Venta[]) request.getAttribute("listaVentas");
     HttpSession sesion = request.getSession();
     String rol = sesion.getAttribute("rolSesion").toString();
 %>
@@ -29,10 +29,95 @@
         <link href="css/sweetalert.css" rel="stylesheet">
         <script src="js/sweetalert.min.js"></script>
         <script type="text/javascript" src="js/productos.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+        <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+        <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+        <script type="text/javascript">
+            jQuery(function ($) {
+                $("#expPDF").click(function () {
+                    var dataSource = shield.DataSource.create({
+                        data: "#tableSales",
+                        schema: {
+                            type: "table",
+                            fields: {
+                                Folio: { type: String },
+                                Producto: { type: Number },
+                                Precio: { type: String },
+                                Cantidad: { type: String },
+                                Subtotal: { type: String },
+                                Total: { type: String },
+                                Lugar: { type: String },
+                                FormaPago: { type: String },
+                                FechaVenta: { type: String }
+
+                            }
+                        }
+                    });
+
+                    // when parsing is done, export the data to PDF
+                    dataSource.read().then(function (data) {
+                        var pdf = new shield.exp.PDFDocument({
+                            author: "Edgar Mendoza",
+                            created: new Date(),
+                        });
+
+                        pdf.addPage("a3", "portrait");
+
+                        pdf.table(
+                            50,
+                            50,
+                            data,
+                            [
+                                { field: "Folio", title: "Folio", width: 50 },
+                                { field: "Producto", title: "Producto", width: 100 },
+                                { field: "Precio", title: "Precio", width: 50 },
+                                { field: "Cantidad", title: "Cantidad", width: 60 },
+                                { field: "Subtotal", title: "Subtotal", width: 50 },
+                                { field: "Total", title: "Total", width: 50 },
+                                { field: "Lugar", title: "Lugar", width: 100 },
+                                { field: "FormaPago", title: "Forma de pago", width: 100 },
+                                { field: "FechaVenta", title: "Fecha de venta", width: 150 }
+                            ],
+                            {
+                                margins: {
+                                    top: 50,
+                                    left: 50
+                                }
+
+                            }
+                        );
+                        pdf.saveAs({
+                            fileName: "Ventas"
+                        });
+                    });
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+                $("#filterByYear").on('click',function(){
+                    $.post('FiltrarVenta',
+                        {firstDate: $("#firstDate").val(),
+                         lastDate: $("#lastDate").val()
+                        },
+                    function(response){
+                        $("#innerTable").html(response);
+                    }
+                    );
+                });
+                
+            });
+        </script>
         <style type="text/css">
             div.modal-header,div.modal-footer{
                 background-color: #E74C3C;
                 color: #FDFEFE;
+            }
+            
+            input[type="image"]{
+                width: 5%;
+                margin: 10px;
             }
         </style>
     </head>
@@ -85,7 +170,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="AltaCotizaciones.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                            <li><a href="ConsultarVenta"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                                
+                            <li><a href="ConsultarVenta"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Consultas </span> </a></li>                             
                         </ul>
                     </li>
                     <li>
@@ -148,50 +233,61 @@
                 <a href="#menu-toggle" id="menu-toggle">
                     <input type="image" src="img/flecha.png">
                 </a>
-                <h1 id="titulo" class="text-center"> Lista de productos </h1>
+                
+                
+                <div class="form-inline" style="margin-top: 10px;">
+                    <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"> <span class="glyphicon glyphicon-calendar"> </span> </div>
+                                    <input type="date" class="form-control" id="firstDate" placeholder="Año Inicial">
+                            </div>
+                            <div class="input-group">
+                                    <input type="date" class="form-control" id="lastDate" placeholder="Año Final">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"> </span></div>
+                            </div>
+                    </div>
+                    <button id="filterByYear" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-filter"></span></button>
+                </div>
+                
+                
+                <h1 id="titulo" class="text-center text-primary"> Listado de Ventas </h1>
                 <div class="form-group">
                     <div class="input-group">
                         <input type="text" class="form-control" id="searchProduct" placeholder="Búsqueda de productos (por nombre, descripción etc...)">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover" style="margin-top: 20px;">
+                    <div id="innerTable" class="table-responsive" style="height: 60%;">
+                        <table id="tableSales" class="table table-hover" style="margin-top: 20px;">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Costo</th>
+                                    <th>Folio</th>
+                                    <th>Producto</th>
                                     <th>Precio</th>
-                                    <th>Proveedor</th>
-                                    <th>Existencia</th>
-                                    <th>Tipo</th>
-                                    <th>Unidad</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                    <th>Total</th>
+                                    <th>Lugar</th>
+                                    <th>FormaPago</th>
+                                    <th>FechaVenta</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <%
                                     int id = 0;
-                                    if (listPro != null) {
-                                        for (int i = 0; i < listPro.length; i++) {
-                                            id = listPro[i].getProducto_id();
+                                    if (listVenta != null) {
+                                        for (int i = 0; i < listVenta.length; i++) {
+                                            
                                 %>
-                                <tr id="tr<%=id%>">
-                                    <td id="nombre<%=id%>"> <%= listPro[i].getNombre()%> </td>
-                                    <td id="descrip<%=id%>"> <%= listPro[i].getDescripcion()%> </td>
-                                    <td id="costo<%=id%>"> <%= listPro[i].getCosto()%> </td>
-                                    <td id="precio<%=id%>"> <%= listPro[i].getPrecio()%> </td>
-                                    <td id="prove<%=id%>"> <%= listPro[i].getProveedor()%> </td>
-                                    <td id="exist<%=id%>"> <%= listPro[i].getExistencia()%> </td>
-                                    <td id="tipo<%=id%>"> <%= listPro[i].getTipo()%> </td>
-                                    <td id="unidad<%=id%>"> <%= listPro[i].getUnidad()%> </td>
-                                    <td>
-                                        <button id="<%=id%>" class='btn btn-warning btn-sm update' type='button' data-toggle="modal" data-target="#myModal">
-                                            <span class='glyphicon glyphicon-refresh'></span>
-                                        </button>
-                                        <button id="<%=id%>" class='btn btn-danger btn-sm delete' type='button'>
-                                            <span class='glyphicon glyphicon-trash'></span>
-                                        </button>
-                                    </td>
+                                <tr>
+                                    <td> #00<%= listVenta[i].getVenta_id() %> </td>
+                                    <td> <%= listVenta[i].getNombre() %> </td>
+                                    <td> <%= listVenta[i].getPrecio() %> </td>
+                                    <td> <%= listVenta[i].getCantidad() %> </td>
+                                    <td> <%= listVenta[i].getSubtotal() %> </td>
+                                    <td> <%= listVenta[i].getTotal() %> </td>
+                                    <td> <%= listVenta[i].getLugar()  %> </td>
+                                    <td> <%= listVenta[i].getForma_pago() %> </td>
+                                    <td> <%= listVenta[i].getFecha() %> </td>
                                 </tr>
                                 <%
 
@@ -200,14 +296,28 @@
                                 %>
                             </tbody>
                         </table>
+                            <div id="editor"></div>
                     </div>
+                    <div class="row text-center">
+                        <input id="expPDF" type="image" src="img/pdf.png">
+                        <input type="image" src="img/excel.png" onclick="ExportToExcel()">
+                        <a href="Chart">
+                          <input type="image" src="img/graph.png">  
+                        </a>
+                        
+                    </div>
+                            
                 </div>
             </div>
         </div>
         <script>
-            $(function () {
-                $('.datepicker').datepicker();
-            });
+            
+            function ExportToExcel(){
+                var table = document.getElementById("tableSales");
+                var html = table.outerHTML;
+                window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+                
+            }
         </script>
         <script>
             $("#menu-toggle").click(function (e) {

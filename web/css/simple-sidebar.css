@@ -133,4 +133,9 @@
         position: relative;
         margin-right: 0;
     }
+    
+    input[type="image"]{
+                width: 5%;
+                margin: 10px;
+            }
 }

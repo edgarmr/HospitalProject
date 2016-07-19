@@ -52,6 +52,30 @@
         <servlet-name>ActualizarPaciente</servlet-name>
         <servlet-class>Controller.ActualizarPaciente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarUsuario</servlet-name>
+        <servlet-class>Controller.ActualizarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarUsuario</servlet-name>
+        <servlet-class>Controller.BorrarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarVenta</servlet-name>
+        <servlet-class>Controller.RegistrarVenta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarVenta</servlet-name>
+        <servlet-class>Controller.ConsultarVenta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FiltrarVenta</servlet-name>
+        <servlet-class>Controller.FiltrarVenta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Chart</servlet-name>
+        <servlet-class>Controller.Chart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -103,6 +127,30 @@
     <servlet-mapping>
         <servlet-name>ActualizarPaciente</servlet-name>
         <url-pattern>/ActualizarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarUsuario</servlet-name>
+        <url-pattern>/ActualizarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarUsuario</servlet-name>
+        <url-pattern>/BorrarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarVenta</servlet-name>
+        <url-pattern>/RegistrarVenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarVenta</servlet-name>
+        <url-pattern>/ConsultarVenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FiltrarVenta</servlet-name>
+        <url-pattern>/FiltrarVenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Chart</servlet-name>
+        <url-pattern>/Chart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

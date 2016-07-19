@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="Model.Classes.Paciente"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,9 @@
     <title>Altas de Pacientes</title>
     
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="css/datepicker.css">
+    
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -40,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" cl><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
+                    <a href="Menu.jsp" cl><span class="glyphicon glyphicon-home"  aria-hidden="true"></span> Inicio </a>
                 </li>
                 <li class="dropdown">
                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -80,40 +82,14 @@
                         Cotizaciones <span class="caret"></span>
                    </a>
                     <ul class="dropdown-menu">
-                             <li><a href="altascotizaciones.php"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
-                             <li><a href="#"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
-                    </ul>
-                </li>
-                
-                <li class="dropdown">
-                   <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        <span class="glyphicon glyphicon-time"  aria-hidden="true"></span>  
-                        Antecedentes <span class="caret"></span>
-                   </a>
-                    <ul class="dropdown-menu">
-                             <li><a href="hereditarios.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">    Hereditarios </span></a></li>
-                             <li><a href="patologicos.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">    Patol&oacute;gicos</span> </a></li>
-                             <li><a href="nopatologicos.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> No Patol&oacute;gicos</span> </a></li>
-                             <li><a href="cronicas.php"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> Cr&oacute;nicas</span> </a></li>                             
+                             <li><a href="AltaCotizaciones.jsp"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Altas </span> </a></li>
+                             <li><a href="ConsultarVenta"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Modificaciones </span> </a></li>                             
                     </ul>
                 </li>
                 
                 <li>
-                    <a href="index.php" cl><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>  Cerrar Sesi&oacute;n </a>
+                    <a href="Logout"><span class="glyphicon glyphicon-log-out"  aria-hidden="true"></span>  Cerrar Sesi&oacute;n </a>
                 </li>
-                
-                <!-- Boton Cerrar Menu -->
-                <div id="page-content-wrapper">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                 <a href="#menu-toggle2" id="menu-toggle2"> 
-                                     <button type="button" class="btn btn-primary">Cerrar Menu</button> 
-                                 </a>             
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
             </ul>
             
@@ -127,11 +103,13 @@
            <br>
             <div class="container-fluid">
                
-               <input type="image" id="hacky-input" src="img/izquierda.jpg">             
+               <a href="#menu-toggle" id="menu-toggle">
+                <input type="image" src="img/flecha.png">
+               </a>             
               
               <br><br>
               
-              <form role="form" action="" method="post">
+              <form role="form" action="RegistrarPaciente" method="post">
               
                <fieldset>
                <legend> Alta de Pacientes</legend>
@@ -187,12 +165,92 @@
             <div class="row">
                           <div class="form-group col-md-6 col-lg-6">
                                 <label>Estado </label>
-                                <select  id="jmr_contacto_estado" class="form-control" name="estado"> 
+                                <select name="estado" class="form-control">
+                                    <option >--- ---</option>
+                                    <option >Aguascalientes</option>
+                                    <option >Baja California</option>
+                                    <option >Baja California Sur</option>
+                                    <option >Campeche</option>
+                                    <option >Coahuila de Zaragoza</option>
+                                    <option >Colima</option>
+                                    <option >Chiapas</option>
+                                    <option >Chihuahua</option>
+                                    <option >Distrito Federal</option>
+                                    <option >Durango</option>
+                                    <option >Guanajuato</option>
+                                    <option >Guerrero</option>
+                                    <option >Hidalgo</option>
+                                    <option >Jalisco</option>
+                                    <option >México</option>
+                                    <option >Michoacán de Ocampo</option>
+                                    <option >Morelos</option>
+                                    <option >Nayarit</option>
+                                    <option >Nuevo León</option>
+                                    <option >Oaxaca</option>
+                                    <option >Puebla</option>
+                                    <option >Querétaro</option>
+                                    <option >Quintana Roo</option>
+                                    <option >San Luis Potosí</option>
+                                    <option >Sinaloa</option>
+                                    <option >Sonora</option>
+                                    <option >Tabasco</option>
+                                    <option >Tamaulipas</option>
+                                    <option >Tlaxcala</option>
+                                    <option >Veracruz de Ignacio de la Llave</option>
+                                    <option >Yucatán</option>
+                                    <option >Zacatecas</option>
                                 </select>
                           </div>                                                                                   
                           <div class="form-group col-md-6 col-lg-6">
                                 <label>Municipio </label>
-                                <select  id="jmr_contacto_municipio" class="form-control" name="municipio"> 
+                                <select name="municipio" class="form-control">
+                                    <option >--- ---</option>
+                                    <option >Abasolo</option>
+                                    <option >Acambaro</option>
+                                    <option >San Miguel de Allende</option>
+                                    <option >Apaseo el Alto</option>
+                                    <option >Apaseo el Grande</option>
+                                    <option >Atarjea</option>
+                                    <option >Celaya</option>
+                                    <option >Manuel Doblado</option>
+                                    <option >Comonfort</option>
+                                    <option >Coroneo</option>
+                                    <option >Cortazar</option>
+                                    <option >Cueramaro</option>
+                                    <option >Doctor Mora</option>
+                                    <option >Dolores Hidalgo Cuna de la Independencia Nacional</option>
+                                    <option >Guanajuato</option>
+                                    <option >Huanimaro</option>
+                                    <option >Irapuato</option>
+                                    <option >Jaral del Progreso</option>
+                                    <option >Jerecuaro</option>
+                                    <option >Leon</option>
+                                    <option >Moroleon</option>
+                                    <option >Ocampo</option>
+                                    <option >Penjamo</option>
+                                    <option >Pueblo Nuevo</option>
+                                    <option >Purisima del Rincon</option>
+                                    <option >Romita</option>
+                                    <option >Salamanca</option>
+                                    <option >Salvatierra</option>
+                                    <option >San Diego de la Union</option>
+                                    <option >San Felipe</option>
+                                    <option >San Francisco del Rincon</option>
+                                    <option >San Jose Iturbide</option>
+                                    <option >San Luis de la Paz</option>
+                                    <option >Santa Catarina</option>
+                                    <option >Santa Cruz de Juventino Rosas</option>
+                                    <option >Santiago Maravatio</option>
+                                    <option >Silao</option>
+                                    <option >Tarandacuao</option>
+                                    <option >Tarimoro</option>
+                                    <option >Tierra Blanca</option>
+                                    <option >Uriangato</option>
+                                    <option >Valle de Santiago</option>
+                                    <option >Victoria</option>
+                                    <option >Villagran</option>
+                                    <option >Xichu</option>
+                                    <option >Yuriria</option>
                                 </select>
                           </div>                       
                 </div>                                                                
@@ -207,14 +265,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="diabetes" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="diabetes" value="no">No</label>
+                        <input type="radio" name="diabetes" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>HAS</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="has" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="has" value="no">No</label>
+                        <input type="radio" name="has" value="no" checked>No</label>
                    </div>
                                    
             </div>
@@ -225,14 +283,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="cancer" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="cancer" value="no">No</label>
+                        <input type="radio" name="cancer" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Cardiopat&iacute;as</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="cardiopatia" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="cardiopatia" value="no">No</label>
+                        <input type="radio" name="cardiopatia" value="no" checked>No</label>
                    </div>
                                    
             </div>
@@ -243,14 +301,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="enf_renales" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="enf_renales" value="no">No</label>
+                        <input type="radio" name="enf_renales" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Tiroides</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="tiroides" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="tiroides" value="no">No</label>
+                        <input type="radio" name="tiroides" value="no" checked>No</label>
                    </div>
                                    
             </div>
@@ -261,14 +319,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="enf_autoinmunes" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="enf_autoinmunes" value="no">No</label>
+                        <input type="radio" name="enf_autoinmunes" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Embolias</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="embolias" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="embolias" value="no">No</label>
+                        <input type="radio" name="embolias" value="no" checked>No</label>
                    </div>
                                    
             </div>
@@ -279,7 +337,7 @@
                         <label class="radio-inline">
                         <input type="radio" name="musculoesqueleticas" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="musculoesqueleticas" value="no">No</label>
+                        <input type="radio" name="musculoesqueleticas" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Otras</label><br>
@@ -299,14 +357,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="cirugias" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="cirugias" value="no">No</label>
+                        <input type="radio" name="cirugias" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Fracturas</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="fracturas" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="fracturas" value="no">No</label>
+                        <input type="radio" name="fracturas" value="no" checked>No</label>
                    </div>
                                    
             </div>
@@ -317,7 +375,7 @@
                         <label class="radio-inline">
                         <input type="radio" name="transfusiones" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="transfusiones" value="no">No</label>
+                        <input type="radio" name="transfusiones" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                    </div>
@@ -334,14 +392,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="tabaquismo" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="tabaquismo" value="no">No</label>
+                        <input type="radio" name="tabaquismo" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                         <label>Alergias / Uso de Anticoagulantes</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="alergias" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="alergias" value="no">No</label>
+                        <input type="radio" name="alergias" value="no" checked>No</label>
                    </div>
                                    
             </div>
@@ -352,14 +410,14 @@
                         <label class="radio-inline">
                         <input type="radio" name="toxicomanias" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="toxicomanias" value="no">No</label>
+                        <input type="radio" name="toxicomanias" value="no" checked>No</label>
                    </div>
                    <div class="form-group col-md-6 col-lg-6">
                    <label>Alcoholismo</label><br>
                         <label class="radio-inline">
                         <input type="radio" name="alcoholismo" value="si">Si</label>
                         <label class="radio-inline">
-                        <input type="radio" name="alcoholismo" value="no">No</label>
+                        <input type="radio" name="alcoholismo" value="no" checked>No</label>
                    </div>
                                    
             </div>             
@@ -411,14 +469,9 @@
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
     
     <script src="js/jquery-2.2.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Bootstrap Core JavaScript -->
 
     <script src="js/bootstrap-datepicker.js"></script>
     
@@ -428,21 +481,11 @@
     }); 
     </script>
     
-
-    <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-    
-    <!-- Menu Toggle2 Script 2 -->
-    <script>
-    $("#menu-toggle2").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
     
 
